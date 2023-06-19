@@ -4,9 +4,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
-         
   has_many :participations
   has_many :events, through: :participations
   has_many :participations
-      
+
+         after_create :welcome_send
+
+         def welcome_send
+           UserMailer.welcome_email(self).deliver_now
+         end
 end

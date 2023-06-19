@@ -9,8 +9,6 @@ import Register from '../page/register';
 
 import Login from '../page/login';
 
-import PostList from '../components/PostList';
-
 import Logout from '../components/logout';
 
 
@@ -61,15 +59,14 @@ function Form() {
 
         <div>
 
-            <h1>Mon application</h1>
+            <h1>Mon espace</h1>
 
             {user.isLoggedIn ? (
 
                 <div>
 
-                    <p>Bienvenue, Utilisateur n°{user.email} !</p>
+                    <p>Bienvenue sur votre espace, vous êtes connecté avec l'adresse e-mail suivante : {user.email} </p>
 
-                    <PostList />
 
                     <Logout />
 
