@@ -28,6 +28,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
   private
 
+  def sign_in_params
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
+  end
+
   def respond_with(resource, _opts = {})
     render json: {
       status: {

@@ -4,9 +4,11 @@ import { userAtom } from "../atom";
 
 function SignupForm() {
   const [, setUser] = useAtom(userAtom);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password_confirmation, setPassword_Confirmation] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
@@ -23,7 +25,9 @@ function SignupForm() {
           user: {
             email: email,
             password: password,
-            password_confirmation: password_confirmation,
+            password_confirmation: passwordConfirmation,
+            first_name: firstName,
+            last_name: lastName,
           },
         }),
       });
@@ -31,15 +35,15 @@ function SignupForm() {
       if (response.ok) {
         const data = await response.json();
         const token = response.headers.get("Authorization");
-        const email = data.data.email;
+        const userEmail = data.data.email;
 
         localStorage.setItem("token", token);
-        localStorage.setItem("email", email);
+        localStorage.setItem("email", userEmail);
 
         setUser((prevUser) => ({
           ...prevUser,
           isLoggedIn: true,
-          email: email,
+          email: userEmail,
         }));
       } else {
         setError("Erreur lors de la création du compte");
@@ -53,6 +57,26 @@ function SignupForm() {
     <form onSubmit={handleSubmit}>
       <h2>Créer un compte</h2>
       {error && <p>{error}</p>}
+      <div>
+        <label htmlFor="firstName">Prénom :</label>
+        <input
+          type="text"
+          id="firstName"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="lastName">Nom :</label>
+        <input
+          type="text"
+          id="lastName"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+      </div>
       <div>
         <label htmlFor="email">Email :</label>
         <input
@@ -74,12 +98,14 @@ function SignupForm() {
         />
       </div>
       <div>
-        <label htmlFor="password">Confirme ton mot de passe :</label>
+        <label htmlFor="passwordConfirmation">
+          Confirme ton mot de passe :
+        </label>
         <input
           type="password"
-          id="password"
-          value={password_confirmation}
-          onChange={(e) => setPassword_Confirmation(e.target.value)}
+          id="passwordConfirmation"
+          value={passwordConfirmation}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
           required
         />
       </div>
