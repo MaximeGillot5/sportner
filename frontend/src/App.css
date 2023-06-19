@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "Bornspeed";
+  src: url(./fonts/Bornspeed/OTF/Bornspeed-Regular.otf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "Bornspeed";
+}
+body {
+  background-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* NAVBAR */
+
+:root #navbar {
+  --mainColor: #29335c;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #eee;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#navbar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 2rem;
+  background-color: var(--mainColor);
+  color: var(--textColor);
 }
 
-.App-link {
-  color: #61dafb;
+#navbar h3 {
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#navbar #links a {
+  margin: 0 1rem;
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+#navbar .nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+}
+
+#navbar div,
+#links {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  #navbar .nav-btn {
+    visibility: visible;
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  #navbar #links {
+    position: fixed;
+    top: -300vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: var(--mainColor);
+    transition: 1s;
+    z-index: 999;
+  }
+  .links {
+    /* display: flex ; */
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #navbar .responsive_nav {
+    transform: translateY(300vh);
+  }
+
+  #navbar #links .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  #navbar #links a {
+    font-size: 1.5rem;
+  }
+}
+
+/* FOOTER */
+
+#footer {
+  background-color: #29335c;
+  color: white;
+  margin-top: 2em;
+}
+
+#text-orange {
+  color: orangered;
+}
+
+#icons {
+  font-size: 25px;
+}
+
+#footer .space-y-3 {
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+/* RESPONSIVE FOOTER */
+
+@media all and (max-width: 640px) {
+  #footer-right {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
