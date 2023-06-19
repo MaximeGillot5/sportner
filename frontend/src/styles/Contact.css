@@ -1,4 +1,4 @@
-form *{
+form * {
   margin-bottom: 20px;
 }
 
@@ -46,7 +46,8 @@ form,
 .error {
   background: red;
 }
-#name, #email {
+#name,
+#email {
   height: 35px;
   border: none;
   border-radius: 15px;
@@ -55,19 +56,23 @@ form,
   justify-content: center;
   width: 100%;
 }
-#name:focus, textarea:focus, #email:focus, select:focus {
+#name:focus,
+#message:focus,
+#email:focus,
+select:focus {
   outline: none !important;
-  box-shadow: none  !important;
+  box-shadow: none !important;
   border: 2px solid orangered;
 }
 
 #message {
-  height: 100px ;
+  height: 100px;
   resize: none;
   font-size: 18px;
   margin: auto;
   width: 100%;
   border-radius: 15px;
+  border: none;
 }
 
 #form .button:hover {
@@ -85,7 +90,9 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-  #name, #email, #message{
+  #name,
+  #email,
+  #message {
     font-size: 12px;
   }
 }
