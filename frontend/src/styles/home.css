@@ -92,6 +92,7 @@ body {
 #join:hover {
   background-color: rgb(255, 255, 255);
   color: orangered;
+  border: 2px solid orangered;
 }
 
 /* CARD NUMBER */
@@ -129,6 +130,7 @@ body {
 #btn-more:hover {
   background-color: rgb(255, 255, 255);
   color: orangered;
+  border: 2px solid orangered;
 }
 
 /* CAROUSEL */
@@ -204,7 +206,6 @@ body {
   z-index: 1;
 }
 
-
 /* ILLUSTRATION */
 
 #illustration {
@@ -252,12 +253,12 @@ body {
     grid-area: 3 / 1 / 4 / 3;
     max-width: 100%;
   }
-  
-  #home-carousel .carousel-item.active{
+
+  #home-carousel .carousel-item.active {
     position: relative;
     max-width: 100%;
     height: auto;
-  }  
+  }
 
   #IconsText {
     grid-area: 4/1/4/4;
@@ -322,15 +323,15 @@ body {
 /* RESPONSIVE FOOTER */
 
 @media screen and (max-height: 620px) and (min-width: 1200px) {
-  .cards-group{
-   height: 100%;
+  .cards-group {
+    height: 100%;
   }
-  #home-carousel .carousel-item.active{
+  #home-carousel .carousel-item.active {
     position: relative;
     max-width: 100%;
     height: 100%;
-  }  
+  }
   .carousel-item {
     transition: none;
   }
- }
+}
