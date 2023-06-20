@@ -37,7 +37,7 @@ const Footer = () => {
             <div id='text-orange' className="uppercase dark:text-gray-50">Réseaux Sociaux</div>
             <div className="flex justify-center space-x-3">
               <a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
-                <i id='icons' class="fa-brands fa-square-github"></i>
+                <i id='icons' className="fa-brands fa-square-github"></i>
               </a>
               <a rel="noopener noreferrer" href="#" title="Twitter" className="flex items-center p-1">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-current">
