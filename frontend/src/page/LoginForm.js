@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atom';
-import Register from '../page/register';
+import Register from '../components/Register';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import "../styles/LoginForm.css";
@@ -34,14 +34,12 @@ function Form() {
         }
 
         if (!token && !storedEmail && user.isLoggedIn) {
-            // L'utilisateur est déconnecté, effacer les données du stockage local
             localStorage.removeItem('email');
         }
     }, [setUser, user.isLoggedIn]);
 
     return (
         <div>
-            <h1>Mon espace</h1>
             {user.isLoggedIn ? (
                 <div>
                     <p>

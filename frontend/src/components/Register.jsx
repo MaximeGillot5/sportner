@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
+import { useNavigate } from "react-router-dom";
+
 
 function SignupForm() {
+  const navigate = useNavigate(); 
   const [, setUser] = useAtom(userAtom);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -45,6 +48,8 @@ function SignupForm() {
           isLoggedIn: true,
           email: userEmail,
         }));
+        navigate("/");
+        window.location.reload();
       } else {
         setError("Erreur lors de la création du compte");
       }

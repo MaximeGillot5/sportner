@@ -17,31 +17,30 @@ function EditProfileForm() {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-        fetch('http://localhost:4000/current_user', {
-            headers: {
-                Authorization: `${token}`,
-            },
+      fetch('http://localhost:4000/current_user', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setFirstName(data.first_name);
+          setLastName(data.last_name);
+          setEmail(data.email);
+          setUser({
+            isLoggedIn: true,
+            email: storedEmail,
+          });
         })
-            .then((response) => response.json())
-            .then((data) => {
-                setFirstName(data.first_name);
-                setLastName(data.last_name);
-                setEmail(data.email);
-                setUser({
-                    isLoggedIn: true,
-                    email: storedEmail,
-                });
-            })
-            .catch((error) => {
-                console.error('Erreur lors de la récupération du prénom :', error);
-            });
+        .catch((error) => {
+          console.error('Erreur lors de la récupération du prénom :', error);
+        });
     }
 
     if (!token && !storedEmail && user.isLoggedIn) {
-        // L'utilisateur est déconnecté, effacer les données du stockage local
-        localStorage.removeItem('email');
+      localStorage.removeItem('email');
     }
-}, [setUser, user.isLoggedIn]);
+  }, [setUser, user.isLoggedIn]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
