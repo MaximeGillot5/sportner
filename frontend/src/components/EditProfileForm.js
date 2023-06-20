@@ -14,7 +14,6 @@ function EditProfileForm() {
 
     useEffect(() => {
         if (user.isLoggedIn) {
-            // Récupérer les informations de l'utilisateur actuel depuis l'API
             fetch('http://localhost:4000/current_user', {
                 headers: {
                     Authorization: `${localStorage.getItem('token')}`,
@@ -35,7 +34,6 @@ function EditProfileForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Envoyer les données de mise à jour de l'utilisateur vers l'API
         fetch(`http://localhost:4000/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -54,7 +52,6 @@ function EditProfileForm() {
         })
             .then((response) => response.json())
             .then((data) => {
-                // Mettre à jour les informations de l'utilisateur dans le state
                 setUser((prevUser) => ({
                     ...prevUser,
                     first_name: data.first_name,

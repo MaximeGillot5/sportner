@@ -26,6 +26,7 @@ function Navbar() {
                         <a href="/#">évenements</a>
                         <a href="/#">Sports</a>
                         <a href="/about">à propos</a>
+                        <a href="/account">Mon profil</a>
                     </div>
                     <div>
                         <a href="/login">Connexion</a>
