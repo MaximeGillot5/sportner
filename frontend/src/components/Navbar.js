@@ -2,10 +2,12 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-
+import Logout from "./Logout";
 
 function Navbar() {
     const navRef = useRef();
+    const token = localStorage.getItem('token');
+    const storedEmail = localStorage.getItem('email');
 
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
@@ -13,7 +15,6 @@ function Navbar() {
             document.body.classList.toggle("nav-open");
         }
     };
-
     return (
         <Router>
             <header id="navbar">
@@ -25,10 +26,8 @@ function Navbar() {
                         <a href="/">Accueil</a>
                         <a href="/#">évenements</a>
                         <a href="/#">Sports</a>
-                        <a href="/account">Profil</a>
-                    </div>
-                    <div>
-                        <a href="/login">Connexion</a>
+                        {token && storedEmail ? <a href="/account">Mon profil</a> : <a href="/login">Connexion</a>}
+                        {token && storedEmail ? <Logout/> : null }
                     </div>
                     <button
                         className="nav-btn nav-close-btn"

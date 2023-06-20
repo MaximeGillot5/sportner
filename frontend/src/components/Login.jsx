@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate(); 
   const [, setUser] = useAtom(userAtom);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +41,9 @@ function Login() {
           isLoggedIn: true,
           email: email,
         }));
+
+        navigate("/");
+        window.location.reload();
       } else {
         setError("Identifiants invalides");
       }
