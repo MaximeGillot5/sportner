@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atom';
 import Register from '../page/register';
-import Login from '../page/login';
-import Logout from '../components/logout';
-import EditProfileForm from '../components/EditProfileForm';
+import Login from '../components/Login';
+import Logout from '../components/Logout';
+import "../styles/LoginForm.css";
 
 function Form() {
     const [user, setUser] = useAtom(userAtom);
@@ -48,12 +48,16 @@ function Form() {
                         Bienvenue sur votre espace, {firstName}.
                     </p>
                     <Logout />
-                    <EditProfileForm />
                 </div>
             ) : (
-                <div>
+                <div id="LoginFormWrap">
+                    <div className="title"> <p>Connecte toi ou inscris toi dès maintenant sur Sport<span id='text-orange'>ner</span> !</p> </div>
+                    <div className="signup-form">
                     <Register />
+                    </div>
+                    <div className="signin-form">
                     <Login />
+                    </div>
                 </div>
             )}
         </div>

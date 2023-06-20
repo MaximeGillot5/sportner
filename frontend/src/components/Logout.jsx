@@ -2,7 +2,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
 
-function LogoutButton() {
+function Logout() {
   const [, setUser] = useAtom(userAtom);
 
   const handleLogout = () => {
@@ -12,7 +12,6 @@ function LogoutButton() {
       userData: null,
     });
 
-    // Supprimer le token et l'ID utilisateur du localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     localStorage.removeItem("email");
@@ -21,4 +20,4 @@ function LogoutButton() {
   return <button onClick={handleLogout}>Déconnexion</button>;
 }
 
-export default LogoutButton;
+export default Logout;
