@@ -23,13 +23,13 @@ function Navbar() {
                 <nav id='links' ref={navRef}>
                     <div className="links">
                         <a href="/">Accueil</a>
-                        <a href="/#">évenements</a>
+                        <a href="/login">évenements</a>
                         <a href="/#">Sports</a>
                         <a href="/about">à propos</a>
                         <a href="/account">Mon profil</a>
                     </div>
                     <div>
-                        <a href="/login">Connexion</a>
+                        <a href="/account">Connexion</a>
                     </div>
                     <button
                         className="nav-btn nav-close-btn"
