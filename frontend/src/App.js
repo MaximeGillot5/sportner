@@ -6,14 +6,15 @@ import Footer from './components/Footer';
 import About from './page/About';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import LoginForm from "./page/LoginForm"
-
+import UserAccount from './page/UserAccount';
 
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Router>
+      <UserAccount />
+      {/* <Router>
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="/login" element={<LoginForm />} />
           </Routes>
         </div>
-      </Router>
+      </Router> */}
       <Footer />
     </div>
   );

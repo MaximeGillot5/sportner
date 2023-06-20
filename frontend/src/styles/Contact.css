@@ -14,12 +14,11 @@ form,
 .form-message {
   margin-bottom: 15px;
 }
-
-#contact-text {
+#form #contact-text {
   padding-bottom: 5%;
 }
 
-.button {
+#form .button {
   background-color: #29335c;
   color: rgb(255, 255, 255);
   padding-left: 15px;
@@ -29,8 +28,8 @@ form,
   border-radius: 30px;
   margin-top: 20px;
 }
-.success,
-.error {
+#form .success,
+#form .error {
   width: 300px;
   margin: 0 auto;
   display: flex;
@@ -40,14 +39,14 @@ form,
   padding: 10px;
   border-radius: 5px;
 }
-.success {
+#form .success {
   background: green;
 }
 .error {
   background: red;
 }
-#name,
-#email {
+#form #name,
+#form #email {
   height: 35px;
   border: none;
   border-radius: 15px;
@@ -56,16 +55,16 @@ form,
   justify-content: center;
   width: 100%;
 }
-#name:focus,
-#message:focus,
-#email:focus,
+#form #name:focus,
+#form #message:focus,
+#form #email:focus,
 select:focus {
   outline: none !important;
   box-shadow: none !important;
   border: 2px solid orangered;
 }
 
-#message {
+#form #message {
   height: 100px;
   resize: none;
   font-size: 18px;
@@ -79,7 +78,7 @@ select:focus {
   cursor: pointer;
 }
 
-input {
+#form input {
   height: 35px;
   border: none;
   border-radius: 25px;
@@ -90,15 +89,15 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-  #name,
-  #email,
-  #message {
+  #form #name,
+  #form #email,
+  #form #message {
     font-size: 12px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  input {
+  #form input {
     margin: auto;
   }
 }
