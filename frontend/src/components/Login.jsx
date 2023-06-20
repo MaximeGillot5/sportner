@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
+import "../styles/Login.css";
 
 function Login() {
   const [, setUser] = useAtom(userAtom);
@@ -48,12 +49,14 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id="login" className="form-container">
       <form onSubmit={handleLogin}>
-        <h2>Se connecter</h2>
+        <h2 id="text-login">Se connecter</h2>
         {error && <p>{error}</p>}
-        <div>
-          <label htmlFor="email">Email :</label>
+        <div id="email-div">
+          <label id="email-label" htmlFor="email">
+            Email :
+          </label>
           <input
             type="email"
             id="email"
@@ -62,8 +65,10 @@ function Login() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Mot de passe :</label>
+        <div id="password-div">
+          <label id="password-label" htmlFor="password">
+            Mot de passe :
+          </label>
           <input
             type="password"
             id="password"
@@ -72,7 +77,9 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Se connecter</button>
+        <button id="btn-login" type="submit">
+          Se connecter
+        </button>
       </form>
     </div>
   );
