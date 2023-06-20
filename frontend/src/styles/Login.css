@@ -1,0 +1,86 @@
+#login * {
+  margin-bottom: 20px;
+}
+
+#btn-login {
+  color: white;
+  background-color: orangered;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+#login,
+#login .form-container {
+  text-align: center;
+  color: #29335c;
+  object-fit: cover;
+  align-items: center;
+  text-align: center;
+  padding-top: 2%;
+}
+
+#text-login {
+  color: white;
+  font-size: x-large;
+}
+
+#password-div,
+#email-div {
+  padding-bottom: 60px;
+}
+
+#email-div {
+  padding-top: 50px;
+}
+
+#email-label,
+#password-label {
+  color: white;
+}
+
+#password,
+#email {
+  height: 35px;
+  border: none;
+  border-radius: 15px;
+  color: #29335c;
+  font-size: 20px;
+  justify-content: center;
+  width: 100%;
+}
+#password:focus,
+#email:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid orangered;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+input {
+  height: 35px;
+  border: none;
+  border-radius: 25px;
+  color: #29335c;
+  font-size: 20px;
+  justify-content: center;
+  max-width: 90%;
+  background-color: white;
+}
+
+@media screen and (max-width: 800px) {
+  #email,
+  #password {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  input {
+    margin: auto;
+  }
+}
