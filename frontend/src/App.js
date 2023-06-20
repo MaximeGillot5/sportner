@@ -13,16 +13,16 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <UserAccount />
-      {/* <Router>
+      <Router>
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<LoginForm />} />
+            < Route path='/account' element={<UserAccount />} />
           </Routes>
         </div>
-      </Router> */}
+      </Router>
       <Footer />
     </div>
   );
