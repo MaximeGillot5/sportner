@@ -28,7 +28,7 @@ function Navbar() {
                         <a href="/account">Profil</a>
                     </div>
                     <div>
-                        <a href="/account">Connexion</a>
+                        <a href="/signin">Connexion</a>
                     </div>
                     <button
                         className="nav-btn nav-close-btn"
