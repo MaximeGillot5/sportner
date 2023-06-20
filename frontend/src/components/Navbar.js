@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 import Logout from "./Logout";
 
 function Navbar() {
@@ -26,6 +26,7 @@ function Navbar() {
                         <a href="/">Accueil</a>
                         <a href="/#">évenements</a>
                         <a href="/#">Sports</a>
+                        <a href="/about">Contact</a>
                         {token && storedEmail ? <a href="/account">Mon profil</a> : <a href="/login">Connexion</a>}
                         {token && storedEmail ? <Logout/> : null }
                     </div>
