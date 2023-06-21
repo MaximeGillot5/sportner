@@ -5,7 +5,6 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import "../styles/LoginForm.css";
-import PasswordReset from '../components/PasswordReset';
 
 function Form() {
     const [user, setUser] = useAtom(userAtom);
@@ -50,14 +49,13 @@ function Form() {
                 </div>
             ) : (
                 <div id="LoginFormWrap">
-                    <div className="title"> <p>Connecte toi ou inscris toi dès maintenant sur Sport<span id='text-orange'>ner</span> !</p> </div>
-                    <div className="signup-form">
-                    <Register />
-                    </div>
+                    <div className="title"> <p>Connecte-toi ou inscris-toi dès maintenant sur Sport<span id='text-orange'>ner</span> !</p> </div>
                     <div className="signin-form">
                     <Login />
                     </div>
-                    <PasswordReset/>
+                    <div className="signup-form">
+                    <Register />
+                    </div>
                 </div>
             )}
         </div>

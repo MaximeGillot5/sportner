@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/ForgotPassword.css';
 
 const PasswordChange = () => {
   const [email, setEmail] = useState('');
@@ -50,6 +51,7 @@ const PasswordChange = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div>
+          <h1>Récupère ton code secret et rejoins-nous !</h1>
           <label>
             Adresse email :
             <input type="email" value={email} onChange={handleEmailChange} />
@@ -57,7 +59,7 @@ const PasswordChange = () => {
         </div>
         <div>
           <label>
-            Token :
+            Code secret :
             <input type="text" value={token} onChange={handleTokenChange} />
           </label>
         </div>
@@ -67,7 +69,7 @@ const PasswordChange = () => {
             <input type="password" value={password} onChange={handleNewPasswordChange} />
           </label>
         </div>
-        <button type='submit'>Réinitialiser le mot de passe</button>
+        <button type='submit' disabled={!token|| !email || !password}>Réinitialiser le mot de passe</button>
       </form>
     );
   }
@@ -77,19 +79,19 @@ const PasswordChange = () => {
       case 'success':
         return (
           <div>
-            Le mot de passe a été modifié avec succès.
+            Le mot de passe a été modifié avec succès. ✅
           </div>
         );
       case 'not-found':
         return (
           <div>
-            Adresse email ou token incorrect.
+            Adresse email ou code secret incorrect. ❌ 
           </div>
         );
       case 'error':
         return (
           <div>
-            Une erreur s'est produite, veuillez réessayer plus tard.
+            Une erreur s'est produite, veuillez réessayer plus tard. ⌛
           </div>
         );
       default:
@@ -99,8 +101,12 @@ const PasswordChange = () => {
 
   return (
     <div>
-      {renderForm()}
-      {renderMessage()}
+      <div id='NewPassword'>
+        {renderForm()}
+      </div>
+      <div id='NewPasswordMessage'>
+        {renderMessage()}
+      </div>
     </div>
   );
 };

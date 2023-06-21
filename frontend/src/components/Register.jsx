@@ -60,7 +60,7 @@ function SignupForm() {
 
   return (
     <form id="register-form" class="my-form" onSubmit={handleSubmit}>
-      <h2>Créer un compte</h2>
+      <h2 id="register-title">Créer un compte</h2>
       {error && <p>{error}</p>}
       <div id="firstname-input">
         <input

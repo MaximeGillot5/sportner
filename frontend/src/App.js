@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import LoginForm from "./page/LoginForm"
 import UserAccount from './page/UserAccount';
 import ForgotPassword from './page/ForgotPassword';
+import LostPassword from './page/LostPassword';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/login" element={<LoginForm />} />
             <Route path='/account' element={<UserAccount />} />
             <Route path='/passwords/reset' element={<ForgotPassword/>} />
+            <Route path='/passwords/lost' element={<LostPassword/>} />
           </Routes>
         </div>
       </Router>

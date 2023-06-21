@@ -82,6 +82,9 @@ function Login() {
             required
           />
         </div>
+        <div className="forgot-link">
+          <a onClick={() => navigate("/passwords/lost")}>Mot de passe oublié ?</a>
+        </div>
         <button id="btn-login" type="submit">
           Se connecter
         </button>
