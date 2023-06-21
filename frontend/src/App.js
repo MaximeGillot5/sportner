@@ -7,6 +7,7 @@ import About from './page/About';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import LoginForm from "./page/LoginForm"
 import UserAccount from './page/UserAccount';
+import ForgotPassword from './page/ForgotPassword';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path='/account' element={<UserAccount />} />
+            <Route path='/passwords/reset' element={<ForgotPassword/>} />
           </Routes>
         </div>
       </Router>

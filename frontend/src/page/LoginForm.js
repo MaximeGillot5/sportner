@@ -5,6 +5,7 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import "../styles/LoginForm.css";
+import PasswordReset from '../components/PasswordReset';
 
 function Form() {
     const [user, setUser] = useAtom(userAtom);
@@ -56,6 +57,7 @@ function Form() {
                     <div className="signin-form">
                     <Login />
                     </div>
+                    <PasswordReset/>
                 </div>
             )}
         </div>
