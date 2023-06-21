@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :sports, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :participations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  post 'passwords/forgot', to: 'passwords#forgot'
+  post 'passwords/reset', to: 'passwords#reset'
   
   get 'current_user', to: 'current_user#index'
 
