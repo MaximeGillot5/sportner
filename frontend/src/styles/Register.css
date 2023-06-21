@@ -5,13 +5,16 @@
   font-size: smaller;
 }
 
+#register-form input::placeholder {
+  text-align: center;
+}
+
+#register-title{
+  font-size: x-large;
+}
 #firstname-input {
   padding-top: 30px;
 }
-
-/* #password-confirm-input {
-  padding-bottom: 0px;
-} */
 
 #register-btn {
   background-color: #29335c;
@@ -19,3 +22,10 @@
   padding: 20px;
   border-radius: 30px;
 }
+@media screen and (max-width: 650px) {
+  #register-form input::placeholder {
+      font-size: 8px;
+      text-align: center;
+  }
+}
+

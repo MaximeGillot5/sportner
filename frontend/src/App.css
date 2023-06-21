@@ -28,7 +28,9 @@ body {
   background-color: var(--mainColor);
   color: var(--textColor);
 }
-
+#BigTitle{
+  cursor: pointer;
+}
 #navbar h3 {
   font-size: 30px;
 }

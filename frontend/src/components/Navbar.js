@@ -9,6 +9,10 @@ function Navbar() {
     const token = localStorage.getItem('token');
     const storedEmail = localStorage.getItem('email');
 
+    function handleDivClick() {
+        window.location.href = '/';
+    }
+
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
         if (typeof document !== 'undefined') {
@@ -18,7 +22,7 @@ function Navbar() {
     return (
         <Router>
             <header id="navbar">
-                <div>
+                <div id="BigTitle" onClick={handleDivClick}>
                     <h3>SPORT<span id="text-orange">NER</span></h3>
                 </div>
                 <nav id='links' ref={navRef}>
