@@ -1,0 +1,21 @@
+#register-form input {
+  max-width: 60%;
+  min-width: 60%;
+  border-radius: 40px;
+  font-size: smaller;
+}
+
+#firstname-input {
+  padding-top: 30px;
+}
+
+/* #password-confirm-input {
+  padding-bottom: 0px;
+} */
+
+#register-btn {
+  background-color: #29335c;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+}

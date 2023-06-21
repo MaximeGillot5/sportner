@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/Register.css";
 
 function SignupForm() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [, setUser] = useAtom(userAtom);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -51,70 +51,70 @@ function SignupForm() {
         navigate("/");
         window.location.reload();
       } else {
-        setError("Erreur lors de la création du compte");
+        alert("Erreur lors de la création du compte");
       }
     } catch (error) {
-      setError("Erreur lors de la création du compte");
+      alert("Erreur lors de la création du compte");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="register-form" class="my-form" onSubmit={handleSubmit}>
       <h2>Créer un compte</h2>
       {error && <p>{error}</p>}
-      <div>
-        <label htmlFor="firstName">Prénom :</label>
+      <div id="firstname-input">
         <input
           type="text"
           id="firstName"
           value={firstName}
+          placeholder="Prénom"
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="lastName">Nom :</label>
         <input
           type="text"
           id="lastName"
+          placeholder="Nom"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="email">Email :</label>
         <input
           type="email"
           id="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="password">Mot de passe :</label>
         <input
           type="password"
           id="password"
+          placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
-      <div>
-        <label htmlFor="passwordConfirmation">
-          Confirme ton mot de passe :
-        </label>
+      <div id="password-confirm-input">
         <input
           type="password"
           id="passwordConfirmation"
+          placeholder="Confirme ton mot de passe"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           required
         />
       </div>
-      <button type="submit">Créer un compte et se connecter</button>
+      <button id="register-btn" type="submit">
+        Créer un compte
+      </button>
     </form>
   );
 }
