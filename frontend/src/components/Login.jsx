@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
 function Login() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [, setUser] = useAtom(userAtom);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,10 +46,10 @@ function Login() {
         navigate("/");
         window.location.reload();
       } else {
-        setError("Identifiants invalides");
+        alert("Identifiants invalides");
       }
     } catch (error) {
-      setError("Une erreur s'est produite");
+      alert("Une erreur s'est produite");
     }
   };
 
