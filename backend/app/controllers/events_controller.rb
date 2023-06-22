@@ -33,11 +33,21 @@ class EventsController < ApplicationController
       render json: { error: 'Erreur lors de la mise à jour de l\'événement' }, status: :unprocessable_entity
     end
   end
-  
+ 
 
   def destroy
-    # Code pour supprimer un événement spécifique
+    event = Event.find_by(id: params[:id], user_id: current_user.id)
+  
+    if event
+      event.destroy
+      render json: { message: 'Événement supprimé avec succès', event: event }, status: :ok
+    else
+      render json: { error: 'Erreur lors de la suppression de l\'événement' }, status: :unprocessable_entity
+    end
   end
+  
+
+
 
   private
 
@@ -45,4 +55,6 @@ class EventsController < ApplicationController
     params.require(:event).permit(:event_name, :attendees, :location, :description, :user_id, :sport_id, :event_date, :event_time)
   end
   
+
 end
+
