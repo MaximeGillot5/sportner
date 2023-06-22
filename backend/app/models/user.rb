@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
   has_many :participations
   has_many :events, through: :participations
-  has_many :participations
+  has_many :created_events, class_name: 'Event', foreign_key: 'user_id'
   
 
          after_create :welcome_send
