@@ -14,14 +14,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = current_user.events.build(event_params)
-
+    event_params_with_user_id = event_params.merge(user_id: current_user.id)
+    event = current_user.events.build(event_params_with_user_id)
+  
     if event.save
       render json: { message: 'Événement créé avec succès', event: event }, status: :created
     else
       render json: { error: 'Erreur lors de la création de l\'événement' }, status: :unprocessable_entity
     end
   end
+  
 
   def destroy
     # Code pour supprimer un événement spécifique
