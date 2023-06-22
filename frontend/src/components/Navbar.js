@@ -28,7 +28,7 @@ function Navbar() {
                 <nav id='links' ref={navRef}>
                     <div className="links">
                         <a href="/">Accueil</a>
-                        <a href="/#">évenements</a>
+                        <a href="/events">évenements</a>
                         <a href="/#">Sports</a>
                         <a href="/about">Contact</a>
                         {token && storedEmail ? <a href="/account">Mon profil</a> : <a href="/login">Connexion</a>}

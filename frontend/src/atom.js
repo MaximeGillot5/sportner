@@ -6,3 +6,4 @@ export const userAtom = atom({
     token: "",
     isLoggedIn: false,
 });
+
