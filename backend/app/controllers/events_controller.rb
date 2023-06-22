@@ -33,9 +33,7 @@ class EventsController < ApplicationController
       render json: { error: 'Erreur lors de la mise à jour de l\'événement' }, status: :unprocessable_entity
     end
   end
-  
-  
-  
+ 
 
   def destroy
     event = Event.find_by(id: params[:id], user_id: current_user.id)
@@ -50,10 +48,13 @@ class EventsController < ApplicationController
   
 
 
+
   private
 
   def event_params
     params.require(:event).permit(:event_name, :attendees, :location, :description, :user_id, :sport_id, :event_date, :event_time)
   end
   
+
 end
+
