@@ -15,12 +15,14 @@
 }
 /* PROFILE */
 #Cadre{
-  height: 80vh;
+  height: 100%;
   border: 2px solid black;
   width: 80%;
   margin: 20px auto;
   border-radius: 20px;
+  padding-bottom: 30px;
 }
+
 
 #Profile{
   display: flex;
@@ -89,6 +91,7 @@
 @media screen and (max-height: 600px) {
   #Cadre{
     height: 100%;
+    object-fit: cover;
   }
 }
 @media screen and (max-height: 600px) and (max-width : 1200px) {

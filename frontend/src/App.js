@@ -10,6 +10,7 @@ import UserAccount from './page/UserAccount';
 import ForgotPassword from './page/ForgotPassword';
 import LostPassword from './page/LostPassword';
 import Events from './page/Events';
+import EventForm from './page/EventForm';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/passwords/reset' element={<ForgotPassword />} />
             <Route path='/passwords/lost' element={<LostPassword />} />
             <Route path='/events' element={<Events />} />
+            <Route path='/events/create' element={<EventForm/>} />
           </Routes>
         </div>
       </Router>

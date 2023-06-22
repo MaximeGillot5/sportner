@@ -43,7 +43,7 @@ const MyProfile = () => {
   }, [setUser, user.isLoggedIn]);
 
   return (
-    <div id='Cadre'>
+    <div id='Cadre' className='Cadre-profile'>
       <div className='ProfileTitle'>
         <h1>Mon profil</h1>
       </div>
