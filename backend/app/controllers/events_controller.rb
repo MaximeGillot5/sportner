@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # Code pour récupérer et afficher tous les événements
+    events = Event.all
+    render json: { events: events }, status: :ok
   end
 
   def show
