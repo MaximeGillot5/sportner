@@ -50,11 +50,11 @@ function Form() {
             ) : (
                 <div id="LoginFormWrap">
                     <div className="title"> <p>Connecte-toi ou inscris-toi dès maintenant sur Sport<span id='text-orange'>ner</span> !</p> </div>
-                    <div className="signin-form">
+                        <div className="signin-form">
                     <Login />
                     </div>
-                    <div className="signup-form">
-                    <Register />
+                        <div className="signup-form">
+                        <Register />
                     </div>
                 </div>
             )}
