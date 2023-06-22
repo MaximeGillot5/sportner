@@ -34,8 +34,6 @@ class EventsController < ApplicationController
     end
   end
   
-  
-  
 
   def destroy
     # Code pour supprimer un événement spécifique
