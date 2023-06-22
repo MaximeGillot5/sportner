@@ -1,45 +1,49 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
 
   def index
-    @events = Event.all
+    # Code pour récupérer et afficher tous les événements
   end
 
   def show
-    @event = Event.find(params[:id])
+    # Code pour afficher un événement spécifique
+  end
+
+  def new
+    # Code pour afficher le formulaire de création d'un nouvel événement
   end
 
   def create
-    @user = current_user
-    @event = @user.events.build(event_params)
-
-    if @event.save
-      redirect_to event_path(@event), notice: "Event successfully created."
+    event_params_with_user_id = event_params.merge(user_id: current_user.id)
+    event = current_user.events.build(event_params_with_user_id)
+  
+    if event.save
+      render json: { message: 'Événement créé avec succès', event: event }, status: :created
     else
-      render :new
+      render json: { error: 'Erreur lors de la création de l\'événement' }, status: :unprocessable_entity
     end
   end
 
   def update
-    @event = Event.find(params[:id])
-
-    if @event.update(event_params)
-      redirect_to event_path(@event), notice: "Event successfully updated."
+    event = current_user.events.find(params[:id])
+  
+    if event.update(event_params)
+      render json: { message: 'Événement mis à jour avec succès', event: event }, status: :ok
     else
-      render :edit
+      render json: { error: "Erreur lors de la mise à jour de l'événement" }, status: :unprocessable_entity
     end
   end
+  
+  
 
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-
-    redirect_to events_path, notice: "Event successfully deleted."
+    # Code pour supprimer un événement spécifique
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:event_name, :attendees, :location, :description, :sport_id)
+    params.require(:event).permit(:event_name, :attendees, :location, :description, :user_id, :sport_id, :event_date, :event_time)
   end
+  
 end
