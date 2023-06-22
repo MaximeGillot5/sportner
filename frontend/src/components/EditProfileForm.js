@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atom';
-import { useNavigate } from 'react-router-dom';
 
 function EditProfileForm() {
-  const navigate = useNavigate();
   const [user, setUser] = useAtom(userAtom);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [zipCode, setZipCode] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
@@ -27,6 +26,7 @@ function EditProfileForm() {
           setFirstName(data.first_name);
           setLastName(data.last_name);
           setEmail(data.email);
+          setZipCode(data.zip_code);
           setUser({
             isLoggedIn: true,
             email: storedEmail,
@@ -58,6 +58,7 @@ function EditProfileForm() {
           email: email,
           password: password,
           password_confirmation: passwordConfirmation,
+          zip_code: zipCode,
         },
       }),
     })
@@ -67,9 +68,11 @@ function EditProfileForm() {
           ...prevUser,
           first_name: data.first_name,
           last_name: data.last_name,
+          zip_code: data.zip_code,
           email: data.email,
         }));
-        navigate('/');
+        console.log(firstName);
+        // window.location.reload();
       })
       .catch((error) => {
         console.error('Erreur lors de la mise à jour du profil :', error);
@@ -77,62 +80,72 @@ function EditProfileForm() {
   };
 
   return (
+    <div id='Cadre'>
     <form onSubmit={handleSubmit}>
-      <h2>Modifier le profil</h2>
+      <h2 className='ProfileTitle'>Modifier le profil</h2>
       <div>
-        <label htmlFor="firstName">Prénom :</label>
         <input
           type="text"
           id="firstName"
+          placeholder="Prénom"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="lastName">Nom :</label>
         <input
           type="text"
           id="lastName"
+          placeholder="Nom"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="email">Email :</label>
         <input
           type="email"
           id="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="password">Mot de passe :</label>
         <input
           type="password"
           id="password"
+          placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="passwordConfirmation">
-          Confirme ton mot de passe :
-        </label>
         <input
           type="password"
           id="passwordConfirmation"
+          placeholder="Confirmation du mot de passe"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           required
         />
       </div>
+      <div>
+        <input
+          type="number"
+          id="zip_code"
+          placeholder="Code Postal"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+          required
+        />
+      </div>
       <button type="submit">Enregistrer les modifications</button>
     </form>
+    </div>
   );
 }
 

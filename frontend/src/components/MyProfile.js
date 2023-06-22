@@ -7,6 +7,7 @@ const MyProfile = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -23,6 +24,7 @@ const MyProfile = () => {
           setFirstName(data.first_name);
           setLastName(data.last_name);
           setEmail(data.email);
+          setZipCode(data.zip_code);
           setUser({
             isLoggedIn: true,
             email: storedEmail,
@@ -32,7 +34,6 @@ const MyProfile = () => {
           console.error('Erreur lors de la récupération du prénom :', error);
         });
     }
-
     if (!token && !storedEmail && user.isLoggedIn) {
       localStorage.removeItem('email');
     }
@@ -51,7 +52,7 @@ const MyProfile = () => {
           <h1 className='category' >Prénom : {firstName}</h1>
           <h1 className='category'>Nom : {lastName}</h1>
           <h1 className='category'>Adresse email : {email}</h1>
-          <h1 className='category'>Code postal : </h1>
+          <h1 className='category'>Code postal : {zipCode}</h1>
         </div>
       </div>
     </div>
