@@ -15,19 +15,20 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Router>
+      <Events />
+      {/* <Router>
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path='/account' element={<UserAccount />} />
-            <Route path='/passwords/reset' element={<ForgotPassword/>} />
-            <Route path='/passwords/lost' element={<LostPassword/>} />
+            <Route path='/passwords/reset' element={<ForgotPassword />} />
+            <Route path='/passwords/lost' element={<LostPassword />} />
             <Route path='/events' element={<Events />} />
           </Routes>
         </div>
-      </Router>
+      </Router> */}
       <Footer />
     </div>
   );
