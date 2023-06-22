@@ -10,6 +10,7 @@ function EditProfileForm() {
   const [zipCode, setZipCode] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [profilePic, setProfilePic] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -27,6 +28,7 @@ function EditProfileForm() {
           setLastName(data.last_name);
           setEmail(data.email);
           setZipCode(data.zip_code);
+          setProfilePic(data.profile_pic);
           setUser({
             isLoggedIn: true,
             email: storedEmail,
@@ -59,6 +61,7 @@ function EditProfileForm() {
           password: password,
           password_confirmation: passwordConfirmation,
           zip_code: zipCode,
+          profile_pic: profilePic,
         },
       }),
     })
@@ -70,9 +73,9 @@ function EditProfileForm() {
           last_name: data.last_name,
           zip_code: data.zip_code,
           email: data.email,
+          profile_pic: data.profile_pic,
         }));
-        console.log(firstName);
-        // window.location.reload();
+        window.location.reload();
       })
       .catch((error) => {
         console.error('Erreur lors de la mise à jour du profil :', error);
@@ -140,7 +143,15 @@ function EditProfileForm() {
           placeholder="Code Postal"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
-          required
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          id="profile_pic"
+          placeholder="Url de l'image"
+          value={profilePic}
+          onChange={(e) => setProfilePic(e.target.value)}
         />
       </div>
       <button type="submit">Enregistrer les modifications</button>
