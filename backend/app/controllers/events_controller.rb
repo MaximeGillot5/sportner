@@ -25,15 +25,14 @@ class EventsController < ApplicationController
   end
 
   def update
-    event = current_user.events.find(params[:id])
-  
+    event = Event.find_by(id: params[:id], user_id: current_user.id)
+    
     if event.update(event_params)
       render json: { message: 'Événement mis à jour avec succès', event: event }, status: :ok
     else
-      render json: { error: "Erreur lors de la mise à jour de l'événement" }, status: :unprocessable_entity
+      render json: { error: 'Erreur lors de la mise à jour de l\'événement' }, status: :unprocessable_entity
     end
   end
-  
   
 
   def destroy
