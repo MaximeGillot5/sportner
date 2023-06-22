@@ -56,7 +56,7 @@
   text-align: center;
 }
 #Cadre{
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 #Cadre input{
@@ -95,6 +95,12 @@
   #Profile{
     display: block;
     height: 100%;
+    text-align: center;
+  }
+  #ProfilePic{
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
   }
 }
 @media screen and (max-width: 550px) {
@@ -111,5 +117,6 @@
   #Profile{
     display: block;
     height: 100%;
+    text-align: center;
   }
 }

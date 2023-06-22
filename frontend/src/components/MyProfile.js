@@ -8,6 +8,7 @@ const MyProfile = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [profilePic, setProfilePic] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -21,10 +22,12 @@ const MyProfile = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           setFirstName(data.first_name);
           setLastName(data.last_name);
           setEmail(data.email);
           setZipCode(data.zip_code);
+          setProfilePic(data.profile_pic);
           setUser({
             isLoggedIn: true,
             email: storedEmail,
@@ -46,7 +49,10 @@ const MyProfile = () => {
       </div>
       <div id='Profile'>
         <div id='ProfilePic'>
-          <h1>Photo de profil</h1>
+        {profilePic === ""
+          ? <img src="https://th.bing.com/th/id/OIP.LYPZMHdM55TtNv3V-M8JTQHaEr?w=272&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" />
+          : <img src={profilePic} />
+        }
         </div>
         <div id="ProfileInfos">
           <h1 className='category' >Prénom : {firstName}</h1>

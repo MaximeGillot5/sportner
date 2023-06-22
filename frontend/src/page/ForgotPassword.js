@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../styles/ForgotPassword.css';
 
 const PasswordChange = () => {
@@ -6,6 +7,8 @@ const PasswordChange = () => {
   const [token, setToken] = useState('');
   const [password, setNewPassword] = useState('');
   const [requestStatus, setRequestStatus] = useState('pending');
+  const navigate = useNavigate();
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -23,6 +26,9 @@ const PasswordChange = () => {
       .then((response) => {
         if (response.ok) {
           setRequestStatus('success');
+          setTimeout(()=>{
+            navigate("/login");
+          }, 3000);
         } else if (response.status === 404) {
           setRequestStatus('not-found');
         } else {
