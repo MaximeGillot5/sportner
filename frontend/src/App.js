@@ -9,6 +9,7 @@ import LoginForm from "./page/LoginForm"
 import UserAccount from './page/UserAccount';
 import ForgotPassword from './page/ForgotPassword';
 import LostPassword from './page/LostPassword';
+import Events from './page/Events';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path='/account' element={<UserAccount />} />
             <Route path='/passwords/reset' element={<ForgotPassword/>} />
             <Route path='/passwords/lost' element={<LostPassword/>} />
+            <Route path='/events' element={<Events />} />
           </Routes>
         </div>
       </Router>

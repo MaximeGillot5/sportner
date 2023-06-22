@@ -195,6 +195,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+    table_print (1.5.7)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -230,6 +231,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.2)
   rspec-rails (~> 6.0)
+  table_print
   thin (~> 1.7.2)
   tzinfo-data
 

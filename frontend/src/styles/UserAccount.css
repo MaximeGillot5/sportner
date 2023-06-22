@@ -1,0 +1,51 @@
+/* USER ACCOUNT PAGE */
+#ProfilePage{
+  display: block;
+}
+#ProfilePage .button{
+  text-align: center;
+  cursor: default;
+}
+#ProfilePage .button button{
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: orangered;
+  cursor: pointer;
+}
+/* PROFILE */
+#Cadre{
+  height: 80vh;
+  border: 2px solid black;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 20px;
+}
+
+#Profile{
+  display: flex;
+  justify-content: space-around;
+}
+
+#Profilepic{
+  height: 100vh;
+  border: 2px solid blue;
+  width: 100vh;
+}
+
+#ProfileInfos{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#ProfileInfos .category{
+ padding: 10px;
+}
+
+#Cadre .ProfileTitle{
+  margin: 40px 0;
+  text-align: center;
+  font-size: xx-large;
+}
+
