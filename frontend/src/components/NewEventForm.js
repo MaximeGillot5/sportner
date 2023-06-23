@@ -141,7 +141,7 @@ function NewEventForm() {
                         onChange={handleSportIdChange}
                     />
                 </div>
-                <button type="submit">Créer le post</button>
+                <button type="submit">PUBLIER</button>
             </form>
         </div>
 

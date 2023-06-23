@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Moment from 'moment';
 import ButtonJoin from './ButtonJoin';
 import ParticipationsList from './ParticipationsList';
 
-// ...
 
 function EventsList() {
     const [events, setEvents] = useState([]);
@@ -30,6 +30,7 @@ function EventsList() {
     };
 
     return (
+
         <div>
             <h2>Liste des événements</h2>
             {events.map((event) => (
@@ -43,6 +44,7 @@ function EventsList() {
                 </div>
             ))}
         </div>
+
     );
 }
 

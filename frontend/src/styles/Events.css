@@ -55,3 +55,35 @@
   text-align: center;
   font-size: xx-large;
 }
+
+/* EVENTS LIST */
+#cardsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+#eventCard{
+  padding: 20px;
+  background-color: white;
+  color: #29335c;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 30%;
+  margin: 3px
+}
+#eventCard:hover{
+  background-color: #29335c;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  #eventCard {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #eventCard {
+    width: 100%;
+  }
+}
