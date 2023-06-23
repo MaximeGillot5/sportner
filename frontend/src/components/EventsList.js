@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Moment from 'moment';
 import ButtonJoin from './ButtonJoin';
 
-// ...
 
 function EventsList() {
     const [events, setEvents] = useState([]);
@@ -26,18 +26,19 @@ function EventsList() {
     };
 
     return (
-        <div>
-            <h2>Liste des événements</h2>
-            {events.map((event) => (
-                <div key={event.id}>
-                    <h3>Nom : {event.event_name}</h3>
-                    <p>Description :{event.description}</p>
-                    <p>Localisation : {event.location}</p>
-                    <p>{event.event_time}</p>
-                    <ButtonJoin eventId={event.id} />
-                </div>
-            ))}
-        </div>
+       
+    <div id='cardsContainer'>
+        {events.map((event) => (
+            <div id='eventCard' key={event.id}>
+                <h3>Nom : {event.event_name}</h3>
+                <p>Description :{event.description}</p>
+                <p>Localisation : {event.location}</p>
+                <p>{Moment(event.event_time).format('HH:mm')}</p>
+                <ButtonJoin eventId={event.id} />
+            </div>
+        ))}
+    </div>
+       
     );
 }
 
