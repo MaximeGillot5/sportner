@@ -7,9 +7,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    # Code pour afficher un événement spécifique
-  end
+    event = Event.find(params[:id])
+    participants = event.users
 
+    render json: { event: event, participants: participants }, status: :ok
+  end
   def new
     # Code pour afficher le formulaire de création d'un nouvel événement
   end
