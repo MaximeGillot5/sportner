@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ButtonJoin from './ButtonJoin';
+import ParticipationsList from './ParticipationsList';
 
 // ...
 
 function EventsList() {
     const [events, setEvents] = useState([]);
+    const [participants, setParticipants] = useState([]);
 
     useEffect(() => {
         fetchEvents();
@@ -20,6 +22,8 @@ function EventsList() {
                 },
             });
             setEvents(response.data.events);
+            setParticipants(response.data.participants)
+            console.log(response.data)
         } catch (error) {
             console.error('Erreur lors de la récupération des événements :', error);
         }
@@ -35,6 +39,7 @@ function EventsList() {
                     <p>Localisation : {event.location}</p>
                     <p>{event.event_time}</p>
                     <ButtonJoin eventId={event.id} />
+                    <ParticipationsList eventId={event.id} />
                 </div>
             ))}
         </div>
