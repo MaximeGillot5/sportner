@@ -3,10 +3,9 @@ import { useAtom } from "jotai";
 import { userAtom } from "../atom";
 import { useNavigate } from "react-router-dom";
 
-
 function Logout() {
   const [, setUser] = useAtom(userAtom);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setUser({
