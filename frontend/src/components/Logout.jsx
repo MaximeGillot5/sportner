@@ -21,7 +21,7 @@ function Logout() {
     window.location.reload();
   };
 
-  return <button onClick={handleLogout}>Déconnexion</button>;
+  return <button className="buttonLogout" onClick={handleLogout}>Déconnexion</button>;
 }
 
 export default Logout;

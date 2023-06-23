@@ -28,7 +28,7 @@ function NewEventForm() {
         setLocation(event.target.value);
     };
 
-    const handleEventTimeChange = (event) => {
+    const handleEventTimeChange = (event) => {    
         setEventTime(event.target.value);
     };
 
@@ -47,7 +47,7 @@ function NewEventForm() {
             event: {
                 event_name: title,
                 description: content,
-                user_id: user.user_id, // Récupération de l'ID de l'utilisateur à partir de userAtom
+                user_id: user.user_id, 
                 attendees: attendees,
                 location: location,
                 event_time: event_time,
@@ -75,61 +75,68 @@ function NewEventForm() {
         } catch (error) {
             console.error("Erreur lors de la création de l'event :", error);
         }
-    };
+    }; 
 
 
     return (
-        <div>
-            <h2>Création d'un nouvel Event</h2>
+        <div id='Cadre'>
+            <h2 className='CreateEventTitle'>Propose une séance !</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="title">Titre :</label>
-                    <textarea id="title" value={title} onChange={handleTitleChange} />
+                    <input 
+                        id="title"
+                        value={title} 
+                        placeholder='Titre'
+                        onChange={handleTitleChange} />
                 </div>
                 <div>
-                    <label htmlFor="content">Description :</label>
-                    <textarea
+                    <input
                         id="content"
+                        placeholder='Description'
                         value={content}
                         onChange={handleContentChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="attendees">Participants :</label>
-                    <textarea
+                    <input
                         id="attendees"
+                        placeholder='Nombre de participants'
                         value={attendees}
                         onChange={handleAttendeesChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="location">Localisation :</label>
-                    <textarea
+                    <input
                         id="location"
+                        placeholder='Lieu de la séance'
                         value={location}
                         onChange={handleLocationChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="event_time">Heure :</label>
-                    <textarea
+                    <input
                         id="event_time"
+                        type="time"
+                        placeholder='Heure de la séance'
                         value={event_time}
                         onChange={handleEventTimeChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="event_date">Date :</label>
-                    <textarea
+                    <input
                         id="event_date"
+                        placeholder='date'
                         value={event_date}
                         onChange={handleEventDateChange}
+                        type="date"
+                        pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"
                     />
+
                 </div>
                 <div>
-                    <label htmlFor="sport_id">Sport :</label>
-                    <textarea
+                    <input
                         id="sport_id"
+                        placeholder='Sport (id entre 1 et 20 pour le moment)'
                         value={sport_id}
                         onChange={handleSportIdChange}
                     />
