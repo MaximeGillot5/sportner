@@ -3,6 +3,7 @@ import EventsList from '../components/EventsList';
 import { useNavigate } from "react-router-dom";
 import '../styles/Events.css';
 
+
 const Events = () => {
 
   const navigate = useNavigate();

@@ -58,6 +58,9 @@ body {
   display: flex;
   align-items: center;
 }
+#navbar #links button{
+  margin: 0 1rem;
+}
 
 @media only screen and (max-width: 1024px) {
   #navbar .nav-btn {
@@ -84,7 +87,6 @@ body {
     z-index: 999;
   }
   .links {
-    /* display: flex ; */
     flex-direction: column;
     gap: 1.5rem;
   }
@@ -101,6 +103,11 @@ body {
 
   #navbar #links a {
     font-size: 1.5rem;
+  }
+
+  #navbar #links button {
+    font-size: 1.5rem;
+    margin: 0 1rem;
   }
 }
 

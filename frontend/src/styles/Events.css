@@ -1,10 +1,10 @@
+/* EVENTS RESULTS */
+
 .buttonToCreate{
-  width: 100%;
   text-align: center;
   background-color: white;
   border-radius: 20px;
-  border: 2px solid black;
-  margin: 20px 0;
+  margin: 20px;
   padding: 20px;
 }
 .buttonToCreate button{
@@ -13,4 +13,45 @@
   border-radius: 20px;
   color: white;
   margin-top: 20px;
+}
+
+/* EVENTS FORM */
+
+#Cadre form *{
+  display: block;
+  text-align: center;
+}
+#Cadre{
+  min-height: 100%;
+}
+
+#Cadre input{
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+}
+#Cadre input:focus{
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid orangered;
+}
+#Cadre input::placeholder{
+  font-size: 15px;
+}
+
+#Cadre button{
+  margin: auto;
+  padding: 20px;
+  background-color: #29335c;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#Cadre .CreateEventTitle{
+  margin: 40px 0;
+  text-align: center;
+  font-size: xx-large;
 }

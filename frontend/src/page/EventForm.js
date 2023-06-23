@@ -4,7 +4,7 @@ import NewEventForm from '../components/NewEventForm';
 const EventForm = () => {
 
   return (
-    <div>
+    <div id='EventForm'>
       <NewEventForm/>
     </div>
   );
