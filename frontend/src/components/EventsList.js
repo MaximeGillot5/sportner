@@ -31,14 +31,13 @@ function EventsList() {
 
     return (
 
-        <div>
-            <h2>Liste des événements</h2>
+        <div id='cardsContainer'>
             {events.map((event) => (
-                <div key={event.id}>
+                <div id='eventCard' key={event.id}>
                     <h3>Nom : {event.event_name}</h3>
                     <p>Description :{event.description}</p>
                     <p>Localisation : {event.location}</p>
-                    <p>{event.event_time}</p>
+                    <p>{Moment(event.event_time).format('HH:mm')}</p>
                     <ButtonJoin eventId={event.id} />
                     <ParticipationsList eventId={event.id} />
                 </div>
