@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ButtonJoin from './ButtonJoin';
+
+// ...
 
 function EventsList() {
     const [events, setEvents] = useState([]);
@@ -22,7 +25,6 @@ function EventsList() {
         }
     };
 
-
     return (
         <div>
             <h2>Liste des événements</h2>
@@ -31,6 +33,8 @@ function EventsList() {
                     <h3>Nom : {event.event_name}</h3>
                     <p>Description :{event.description}</p>
                     <p>Localisation : {event.location}</p>
+                    <p>{event.event_time}</p>
+                    <ButtonJoin eventId={event.id} />
                 </div>
             ))}
         </div>
@@ -38,3 +42,4 @@ function EventsList() {
 }
 
 export default EventsList;
+
