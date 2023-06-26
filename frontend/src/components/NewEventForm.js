@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
+import { useNavigate } from "react-router-dom";
 
 function NewEventForm() {
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [user] = useAtom(userAtom);
@@ -11,6 +13,21 @@ function NewEventForm() {
     const [event_time, setEventTime] = useState("");
     const [event_date, setEventDate] = useState("");
     const [sport_id, setSportId] = useState("");
+    const [sportOptions, setSportOptions] = useState([]);
+
+    useEffect(() => {
+        const fetchSportOptions = async () => {
+            try {
+                const response = await fetch("http://localhost:4000/sports"); 
+                const data = await response.json();
+                const options = data.sports.map(({ id, name }) => ({ value: id, label: name }));
+                setSportOptions(options);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchSportOptions();
+    }, []);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -69,6 +86,7 @@ function NewEventForm() {
 
             if (response.ok) {
                 console.log("L'event a été créé avec succès");
+                navigate("/events");
             } else {
                 console.error("Erreur lors de la création de l'event");
             }
@@ -92,7 +110,7 @@ function NewEventForm() {
                 <div>
                     <input
                         id="content"
-                        placeholder='Description'
+                        placeholder='Précisions'
                         value={content}
                         onChange={handleContentChange}
                     />
@@ -133,13 +151,15 @@ function NewEventForm() {
                     />
 
                 </div>
-                <div>
-                    <input
-                        id="sport_id"
-                        placeholder='Sport (id entre 1 et 20 pour le moment)'
-                        value={sport_id}
-                        onChange={handleSportIdChange}
-                    />
+                <div id="scroll-option">
+                    <select id="sport_id" onChange={handleSportIdChange} value={sport_id}>
+                      <option value="">Choisissez un sport</option>
+                      {sportOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
                 </div>
                 <button type="submit">PUBLIER</button>
             </form>
