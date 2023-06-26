@@ -26,15 +26,13 @@ const ButtonJoin = ({ eventId }) => {
             )
             .then((response) => {
                 console.log(response.data);
-                // Mettre à jour l'état de l'utilisateur ou effectuer toute autre action nécessaire
             })
             .catch((error) => {
                 console.error(error);
-                // Gérer l'erreur ou afficher un message d'erreur à l'utilisateur
             });
     };
 
-    return <button onClick={handleJoin}>Participer</button>;
+    return <div id="buttonContainer"><button id="buttonParticipation" onClick={handleJoin}>Participer</button></div>;
 };
 
 export default ButtonJoin;
