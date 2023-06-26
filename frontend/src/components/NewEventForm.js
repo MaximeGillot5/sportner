@@ -118,7 +118,7 @@ function NewEventForm() {
                 <div>
                     <input
                         id="attendees"
-                        placeholder='Nombre de participants'
+                        placeholder='Nombre de places'
                         value={attendees}
                         onChange={handleAttendeesChange}
                     />

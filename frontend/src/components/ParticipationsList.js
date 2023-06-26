@@ -31,11 +31,11 @@ function ParticipationsList({ eventId }) {
     return (
         <div>
             <div>
-                <h3>Participants</h3>
+                <h1>Liste des participants :</h1>
                 {Array.isArray(participants) &&
                     participants.map((participation) => (
-                        <div key={participation.id}>
-                            <p>participants : {participation.first_name}</p>
+                        <div id='participantsList' key={participation.id}>
+                            <p>{participation.first_name} {participation.last_name}</p>
                         </div>
                     ))}
             </div>
