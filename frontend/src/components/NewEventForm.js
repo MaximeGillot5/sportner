@@ -59,7 +59,12 @@ function NewEventForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        const now = new Date(); 
+        if (new Date(event_date + " " + event_time) < now) {
+            alert("La date de l'événement ne peut pas être antérieure à la date et heure actuelles");
+            return;
+        }
+        
         const newEvent = {
             event: {
                 event_name: title,

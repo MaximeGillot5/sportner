@@ -3,6 +3,7 @@ import axios from 'axios';
 import Moment from 'moment';
 import ButtonJoin from './ButtonJoin';
 import ParticipationsList from './ParticipationsList';
+import SearchBar from './SearchBar';
 import DeleteEvent from './DeleteEvent';
 
 function EventCard({ event }) {
@@ -72,6 +73,7 @@ function EventCard({ event }) {
 function EventsList() {
   const [events, setEvents] = useState([]);
   const [participants, setParticipants] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
 
   useEffect(() => {
     fetchEvents();
@@ -90,6 +92,7 @@ function EventsList() {
       }).reverse();
       setEvents(sortedEvents);
       setParticipants(response.data.participants);
+      setFilteredEvents(sortedEvents);
       console.log(response.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des événements :', error);
@@ -97,11 +100,29 @@ function EventsList() {
   };
 
 
-  return (
-    <div id='cardsContainer'>
-      {events.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ))}
+  const handleSearch = (value) => {
+
+    let filtered;
+    if (value.trim().length == 0) {
+      filtered = events;
+    } else {
+      filtered = events.filter((event) => {
+        return event.event_name.toLowerCase().includes(value.toLowerCase().trim());
+      });
+    }
+    setFilteredEvents(filtered);
+  };
+  
+
+return (
+    <div>
+      <SearchBar onSearch={handleSearch} />
+      <div id='cardsContainer'>
+        {filteredEvents.map((event) => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+
     </div>
   );
 }
