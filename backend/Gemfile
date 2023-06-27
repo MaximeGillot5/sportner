@@ -56,5 +56,3 @@ group :test do
 end
 
 gem 'table_print'
-
-gem "dockerfile-rails", ">= 1.5", :group => :development
