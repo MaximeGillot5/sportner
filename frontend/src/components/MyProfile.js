@@ -15,7 +15,7 @@ const MyProfile = () => {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-      fetch('http://localhost:4000/current_user', {
+      fetch('https://sportner-back-71b62b08edbf.herokuapp.com/current_user', {
         headers: {
           Authorization: `${token}`,
         },
@@ -49,10 +49,10 @@ const MyProfile = () => {
       </div>
       <div id='Profile'>
         <div id='ProfilePic'>
-        {profilePic === ""
-          ? <img src="https://th.bing.com/th/id/OIP.LYPZMHdM55TtNv3V-M8JTQHaEr?w=272&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" />
-          : <img src={profilePic} />
-        }
+          {profilePic === ""
+            ? <img src="https://th.bing.com/th/id/OIP.LYPZMHdM55TtNv3V-M8JTQHaEr?w=272&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" />
+            : <img src={profilePic} />
+          }
         </div>
         <div id="ProfileInfos">
           <h1 className='category' >Prénom : {firstName}</h1>

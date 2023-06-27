@@ -16,18 +16,21 @@ function Login() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: {
-            email: email,
-            password: password,
+      const response = await fetch(
+        "https://sportner-back-71b62b08edbf.herokuapp.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        }),
-      });
+          body: JSON.stringify({
+            user: {
+              email: email,
+              password: password,
+            },
+          }),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -83,7 +86,9 @@ function Login() {
           />
         </div>
         <div className="forgot-link">
-          <a onClick={() => navigate("/passwords/lost")}>Mot de passe oublié ?</a>
+          <a onClick={() => navigate("/passwords/lost")}>
+            Mot de passe oublié ?
+          </a>
         </div>
         <button id="btn-login" type="submit">
           Se connecter
