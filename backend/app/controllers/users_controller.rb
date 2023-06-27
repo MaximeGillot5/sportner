@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
-  # ...
+  def index
+    users = User.all
+      render json: { users: users }, status: :ok
+  end
+
+  def show
+    user = User.find(params[:id])
+    participants = user.events
+
+    render json: { user: user, participants: participants }, status: :ok
+  end
 
   def create
     user = User.new(user_params)

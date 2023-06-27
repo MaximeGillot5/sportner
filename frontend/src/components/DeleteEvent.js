@@ -19,7 +19,9 @@ const DeleteEvent = ({ eventId, onDelete }) => {
     };
 
     return (
-        <button onClick={deleteEvent}>Supprimer</button>
+        <div id="buttonContainer">
+            <button id='deleteButton' onClick={deleteEvent}>Supprimer la séance</button>
+        </div>
     );
 };
 
