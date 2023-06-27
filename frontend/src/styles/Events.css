@@ -138,14 +138,14 @@
   width: 100%;
   margin-bottom: 10px;
 }
-#buttonParticipation{
+#buttonParticipation, #deleteButton{
   background-color: orangered;
   padding: 10px;
   border-radius: 20px;
   color: white;
   justify-content: center;
 }
-#buttonParticipation:hover{
+#buttonParticipation:hover, #deleteButton:hover{
   background-color: rgb(201, 54, 0);
 }
 #infosCard .date, #eventCard .date{

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ButtonJoin from './ButtonJoin';
 
 function ParticipationsList({ eventId }) {
     const [events, setEvents] = useState([]);
@@ -35,7 +34,7 @@ function ParticipationsList({ eventId }) {
                 {Array.isArray(participants) &&
                     participants.map((participation) => (
                         <div id='participantsList' key={participation.id}>
-                            <p>{participation.first_name} {participation.last_name}</p>
+                            <p>👉 {participation.first_name} {participation.last_name}</p>
                         </div>
                     ))}
             </div>

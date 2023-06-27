@@ -1,15 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useAtom } from 'jotai';
+import { userAtom } from '../atom';
 import Moment from 'moment';
 import ButtonJoin from './ButtonJoin';
 import ParticipationsList from './ParticipationsList';
 import SearchBar from './SearchBar';
 import DeleteEvent from './DeleteEvent';
 
-function EventCard({ event }) {
+function EventCard( {event}) {
   const [showDetails, setShowDetails] = useState(false);
   const [sportOptions, setSportOptions] = useState([]);
   const [selectedValue, setSelectedValue] = useState(event.sport_id);
+  const [user, setUser] = useAtom(userAtom);
+  const [currentUser, setCurrentUser] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const storedEmail = localStorage.getItem('email');
+
+    if (token && storedEmail) {
+      fetch('http://localhost:4000/current_user', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setCurrentUser(data.id);
+          setUser({
+            isLoggedIn: true,
+            email: storedEmail,
+          });
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération du prénom :', error);
+        });
+    }
+    if (!token && !storedEmail && user.isLoggedIn) {
+      localStorage.removeItem('email');
+    }
+  }, [setUser, user.isLoggedIn]);
 
   const handleCardClick = () => {
     setShowDetails(!showDetails);
@@ -21,7 +52,6 @@ function EventCard({ event }) {
         const response = await axios.get("http://localhost:4000/sports");
         const options = response.data.sports.map(({ id, name, sport_url }) => ({ value: id, label: name, pic: sport_url }));
         setSportOptions(options);
-        console.log(options);
       } catch (error) {
         console.error(error);
       }
@@ -34,7 +64,12 @@ function EventCard({ event }) {
       {showDetails ? (
         <div id='participationsCard'>
           <h3>{event.event_name}</h3>
+          {currentUser === event.user_id ?
+          (
+          <DeleteEvent eventId={event.id} />)
+          :(
           <ButtonJoin eventId={event.id} />
+          )}
           <ParticipationsList eventId={event.id} />
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
@@ -63,7 +98,6 @@ function EventCard({ event }) {
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
-          <DeleteEvent eventId={event.id} />
         </div>
       )}
     </div>
@@ -93,7 +127,6 @@ function EventsList() {
       setEvents(sortedEvents);
       setParticipants(response.data.participants);
       setFilteredEvents(sortedEvents);
-      console.log(response.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des événements :', error);
     }

@@ -32,7 +32,9 @@ const ButtonJoin = ({ eventId }) => {
             });
     };
 
-    return <div id="buttonContainer"><button id="buttonParticipation" onClick={handleJoin}>Participer</button></div>;
+    return <div id="buttonContainer">
+                <button id="buttonParticipation" onClick={handleJoin}>Participer</button>
+            </div>;
 };
 
 export default ButtonJoin;
