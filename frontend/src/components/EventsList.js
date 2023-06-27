@@ -4,6 +4,7 @@ import Moment from 'moment';
 import ButtonJoin from './ButtonJoin';
 import ParticipationsList from './ParticipationsList';
 import SearchBar from './SearchBar';
+import DeleteEvent from './DeleteEvent';
 
 function EventCard({ event }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -17,7 +18,7 @@ function EventCard({ event }) {
   useEffect(() => {
     const fetchSportOptions = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/sports"); 
+        const response = await axios.get("http://localhost:4000/sports");
         const options = response.data.sports.map(({ id, name, sport_url }) => ({ value: id, label: name, pic: sport_url }));
         setSportOptions(options);
         console.log(options);
@@ -27,7 +28,7 @@ function EventCard({ event }) {
     };
     fetchSportOptions();
   }, []);
-  
+
   return (
     <div id='eventCard' onClick={handleCardClick}>
       {showDetails ? (
@@ -42,7 +43,7 @@ function EventCard({ event }) {
         </div>
       ) : (
         <div id='infosCard'>
-            <h3>{event.event_name}</h3>
+          <h3>{event.event_name}</h3>
           <div className='bodyCard'>
             <div className='sportText'>
               <p className='description'>{event.description}</p>
@@ -50,11 +51,11 @@ function EventCard({ event }) {
             </div>
             <div className='sportPic'>
               {sportOptions.filter(option => option.value === selectedValue)
-                          .map(option => option.label)}
+                .map(option => option.label)}
               {sportOptions.filter(option => option.value === selectedValue)
-              .map(option => {
-                return <img src={option.pic} alt={option.label} />;
-              })}
+                .map(option => {
+                  return <img src={option.pic} alt={option.label} />;
+                })}
             </div>
 
           </div>
@@ -62,6 +63,7 @@ function EventCard({ event }) {
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
+          <DeleteEvent eventId={event.id} />
         </div>
       )}
     </div>
@@ -97,6 +99,7 @@ function EventsList() {
     }
   };
 
+
   const handleSearch = (value) => {
 
     let filtered;
@@ -119,6 +122,7 @@ return (
           <EventCard key={event.id} event={event} />
         ))}
       </div>
+
     </div>
   );
 }
