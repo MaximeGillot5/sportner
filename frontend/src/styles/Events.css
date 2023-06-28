@@ -15,6 +15,9 @@
   box-shadow: none !important;
   border: 2px solid orangered;
 }
+#searchBar input::placeholder{
+  font-size: 15px;
+}
 
 /* EVENTS RESULTS */
 
@@ -163,10 +166,17 @@
   #eventCard {
     width: 45%;
   }
+  #searchBar input::placeholder{
+    font-size: 12px;
+  }
+  #searchBar input{
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 480px) {
   #eventCard {
     width: 100%;
   }
+ 
 }

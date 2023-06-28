@@ -11,6 +11,7 @@ import ForgotPassword from './page/ForgotPassword';
 import LostPassword from './page/LostPassword';
 import Events from './page/Events';
 import EventForm from './page/EventForm';
+import Sports from './page/Sports';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route path='/passwords/lost' element={<LostPassword />} />
             <Route path='/events' element={<Events />} />
             <Route path='/events/create' element={<EventForm/>} />
+            <Route path='/sports' element={<Sports/>} />
           </Routes>
         </div>
       </Router>

@@ -29,9 +29,9 @@ function Navbar() {
                     <div className="links">
                         <a href="/">Accueil</a>
                         <a href="/events">évenements</a>
-                        <a href="/#">Sports</a>
+                        <a href="/sports">Sports</a>
                         <a href="/about">Contact</a>
-                        {token && storedEmail ? <a href="/account">Mon profil</a> : <a href="/login">Connexion</a>}
+                        {token && storedEmail ? <a href="/account">Profil</a> : <a href="/login">Connexion</a>}
                         {token && storedEmail ? <Logout/> : null }
                     </div>
                     <button

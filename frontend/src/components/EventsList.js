@@ -15,6 +15,7 @@ function EventCard( {event}) {
   const [user, setUser] = useAtom(userAtom);
   const [currentUser, setCurrentUser] = useState([]);
 
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const storedEmail = localStorage.getItem('email');
@@ -45,6 +46,7 @@ function EventCard( {event}) {
   const handleCardClick = () => {
     setShowDetails(!showDetails);
   };
+  
 
   useEffect(() => {
     const fetchSportOptions = async () => {
@@ -73,7 +75,7 @@ function EventCard( {event}) {
           <ParticipationsList eventId={event.id} />
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
-            <p>🕐{Moment(event.event_time).format('HH')}h{Moment(event.event_time).format('mm')}</p>
+            <p>🕐{Moment(event.event_time).subtract(1,'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
         </div>
       ) : (
@@ -96,7 +98,7 @@ function EventCard( {event}) {
           </div>
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
-            <p>🕐{Moment(event.event_time).format('HH')}h{Moment(event.event_time).format('mm')}</p>
+            <p>🕐{Moment(event.event_time).subtract(1,'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
         </div>
       )}
@@ -121,6 +123,7 @@ function EventsList() {
           Authorization: `${token}`,
         },
       });
+      
       const sortedEvents = response.data.events.sort((a, b) => {
         return new Date(a.created_at) - new Date(b.created_at);
       }).reverse();
@@ -132,28 +135,31 @@ function EventsList() {
     }
   };
 
-
   const handleSearch = (value) => {
-
     let filtered;
-    if (value.trim().length == 0) {
+    if (value.trim().length === 0) {
       filtered = events;
     } else {
       filtered = events.filter((event) => {
-        return event.event_name.toLowerCase().includes(value.toLowerCase().trim());
+        return (
+          event.event_name.toLowerCase().includes(value.toLowerCase().trim()) ||
+          event.location.toLowerCase().includes(value.toLowerCase().trim())
+        );
       });
     }
     setFilteredEvents(filtered);
   };
+  
   
 
 return (
     <div>
       <SearchBar onSearch={handleSearch} />
       <div id='cardsContainer'>
-        {filteredEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
+        {filteredEvents
+          .map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
       </div>
 
     </div>
