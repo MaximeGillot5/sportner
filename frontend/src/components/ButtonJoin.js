@@ -16,7 +16,7 @@ const ButtonJoin = ({ eventId }) => {
 
         axios
             .post(
-                `http://localhost:4000/events/${eventId}/participations`,
+                `https://sportner-back-71b62b08edbf.herokuapp.com/events/${eventId}/participations`,
                 participationData,
                 {
                     headers: {

@@ -17,7 +17,7 @@ function EventCard({ event }) {
   useEffect(() => {
     const fetchSportOptions = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/sports");
+        const response = await axios.get("https://sportner-back-71b62b08edbf.herokuapp.com/sports");
         const options = response.data.sports.map(({ id, name, sport_url }) => ({ value: id, label: name, pic: sport_url }));
         setSportOptions(options);
         console.log(options);
@@ -80,7 +80,7 @@ function EventsList() {
   const fetchEvents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:4000/events', {
+      const response = await axios.get('https://sportner-back-71b62b08edbf.herokuapp.com/events', {
         headers: {
           Authorization: `${token}`,
         },
