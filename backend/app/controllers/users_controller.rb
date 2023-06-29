@@ -31,6 +31,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+  
+    user.participations.destroy_all
+  
+    events = user.created_events
+  
+    events.each do |event|
+      event.participations.destroy_all
+    end
+  
+    events.destroy_all
+  
+
+    user.destroy
+  
+    render json: { message: 'Utilisateur supprimé avec succès.' }, status: :ok
+  end
+  
+  
+  
+  
+  
+
   private
 
   def user_params

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
-  has_many :participations
-  has_many :events, through: :participations
-  has_many :created_events, class_name: 'Event', foreign_key: 'user_id'
+  has_many :participations, dependent: :destroy
+  has_many :events, through: :participations, dependent: :destroy
+  has_many :created_events, class_name: 'Event', foreign_key: 'user_id', dependent: :destroy
   
 
         #  after_create :welcome_send
