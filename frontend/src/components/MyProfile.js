@@ -15,7 +15,7 @@ const MyProfile = () => {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-      fetch('https://sportner-back-71b62b08edbf.herokuapp.com/current_user', {
+      fetch('http://localhost:4000/current_user', {
         headers: {
           Authorization: `${token}`,
         },

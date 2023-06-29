@@ -59,6 +59,7 @@ function NewEventForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         const now = new Date(); 
         if (new Date(event_date + " " + event_time) < now) {
             alert("La date de l'événement ne peut pas être antérieure à la date et heure actuelles");
@@ -90,10 +91,11 @@ function NewEventForm() {
             });
 
             if (response.ok) {
-                console.log("L'event a été créé avec succès");
+                alert("L'event a été créé avec succès");
                 navigate("/events");
             } else {
-                console.error("Erreur lors de la création de l'event");
+                navigate("/login"); 
+                alert("Veuillez vous connecter pour créer une séance !");
             }
         } catch (error) {
             console.error("Erreur lors de la création de l'event :", error);

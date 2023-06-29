@@ -2,13 +2,20 @@ import React from "react";
 import axios from "axios";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ButtonJoin = ({ eventId }) => {
     const [, setUser] = useAtom(userAtom);
+    const navigate = useNavigate();
 
     const handleJoin = () => {
         const token = localStorage.getItem("token");
+
+        if (!token) {
+            navigate("/login");
+            alert("Veuillez vous connecter pour participer à une séance !")
+            return;
+          }
 
         const participationData = {
             user_id: localStorage.getItem("id"),
