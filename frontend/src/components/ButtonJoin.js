@@ -3,7 +3,6 @@ import axios from "axios";
 import { useAtom } from "jotai";
 import { userAtom } from "../atom";
 import { useNavigate } from "react-router-dom";
-import DeleteParticipationButton from "./DeleteParticipationButton";
 
 const ButtonJoin = ({ eventId }) => {
     const [, setUser] = useAtom(userAtom);
@@ -60,9 +59,6 @@ const ButtonJoin = ({ eventId }) => {
                 <button id="buttonParticipation" onClick={handleJoin}>
                     Participer
                 </button>
-                <div id="buttonContainer">
-                    <DeleteParticipationButton/>
-                </div>
             </div>
         );
     } else {
