@@ -8,7 +8,7 @@ import ParticipationsList from './ParticipationsList';
 import SearchBar from './SearchBar';
 import DeleteEvent from './DeleteEvent';
 
-function EventCard( {event}) {
+function EventCard({ event }) {
   const [showDetails, setShowDetails] = useState(false);
   const [sportOptions, setSportOptions] = useState([]);
   const [selectedValue, setSelectedValue] = useState(event.sport_id);
@@ -46,12 +46,12 @@ function EventCard( {event}) {
   const handleCardClick = () => {
     setShowDetails(!showDetails);
   };
-  
+
 
   useEffect(() => {
     const fetchSportOptions = async () => {
       try {
-        const response = await axios.get("https://sportner-back-71b62b08edbf.herokuapp.com/sports");
+        const response = await axios.get("http://localhost:4000/sports");
         const options = response.data.sports.map(({ id, name, sport_url }) => ({ value: id, label: name, pic: sport_url }));
         setSportOptions(options);
       } catch (error) {
@@ -67,15 +67,15 @@ function EventCard( {event}) {
         <div id='participationsCard'>
           <h3>{event.event_name}</h3>
           {currentUser === event.user_id ?
-          (
-          <DeleteEvent eventId={event.id} />)
-          :(
-          <ButtonJoin eventId={event.id} />
-          )}
+            (
+              <DeleteEvent eventId={event.id} />)
+            : (
+              <ButtonJoin eventId={event.id} />
+            )}
           <ParticipationsList eventId={event.id} />
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
-            <p>🕐{Moment(event.event_time).subtract(1,'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
+            <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
         </div>
       ) : (
@@ -98,7 +98,7 @@ function EventCard( {event}) {
           </div>
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
-            <p>🕐{Moment(event.event_time).subtract(1,'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
+            <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
         </div>
       )}
@@ -118,12 +118,12 @@ function EventsList() {
   const fetchEvents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://sportner-back-71b62b08edbf.herokuapp.com/events', {
+      const response = await axios.get('http://localhost:4000/events', {
         headers: {
           Authorization: `${token}`,
         },
       });
-      
+
       const sortedEvents = response.data.events.sort((a, b) => {
         return new Date(a.created_at) - new Date(b.created_at);
       }).reverse();
@@ -149,10 +149,10 @@ function EventsList() {
     }
     setFilteredEvents(filtered);
   };
-  
-  
 
-return (
+
+
+  return (
     <div>
       <SearchBar onSearch={handleSearch} />
       <div id='cardsContainer'>

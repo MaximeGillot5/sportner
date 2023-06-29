@@ -28,4 +28,4 @@ Sport.create([
   { name: "Ski", sport_url:"https://cdn-icons-png.flaticon.com/512/3163/3163769.png" },
   { name: "Hockey sur glace", sport_url:"https://cdn-icons-png.flaticon.com/512/5623/5623745.png" },
   { name: "Autre", sport_url:"https://t3.ftcdn.net/jpg/02/78/42/76/360_F_278427683_zeS9ihPAO61QhHqdU1fOaPk2UClfgPcW.jpg" },
-])
+])AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
