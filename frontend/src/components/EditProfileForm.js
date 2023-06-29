@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atom';
+import { useNavigate } from "react-router-dom";
 
 function EditProfileForm() {
   const [user, setUser] = useAtom(userAtom);
@@ -11,6 +12,7 @@ function EditProfileForm() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [profilePic, setProfilePic] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -30,6 +32,7 @@ function EditProfileForm() {
           setZipCode(data.zip_code);
           setProfilePic(data.profile_pic);
           setUser({
+            ...data,
             isLoggedIn: true,
             email: storedEmail,
           });
@@ -82,80 +85,104 @@ function EditProfileForm() {
       });
   };
 
+  const handleDeleteAccount = () => {
+    const confirmDelete = window.confirm('Voulez-vous vraiment quitter Sportner ?');
+    if (confirmDelete) {
+      navigate("/");
+      fetch(`http://localhost:4000/users/${user.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${localStorage.getItem('token')}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(() => {
+          alert("Votre compte a bien été supprimé. À bientôt sur Sportner !");
+        })
+        .catch((error) => {
+          alert('Erreur lors de la suppression de votre compte. Veuillez rééssayer ou nous contacter.', error);
+        });
+    }
+  };
+
+
   return (
     <div id='Cadre'>
-    <form onSubmit={handleSubmit}>
-      <h2 className='ProfileTitle'>Modifier le profil</h2>
-      <div>
-        <input
-          type="text"
-          id="firstName"
-          placeholder="Prénom"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          id="lastName"
-          placeholder="Nom"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          id="password"
-          placeholder="Mot de passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          id="passwordConfirmation"
-          placeholder="Confirmation du mot de passe"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <input
-          type="number"
-          id="zip_code"
-          placeholder="Code Postal"
-          value={zipCode}
-          onChange={(e) => setZipCode(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          id="profile_pic"
-          placeholder="Url de l'image"
-          value={profilePic}
-          onChange={(e) => setProfilePic(e.target.value)}
-        />
-      </div>
-      <button type="submit">Enregistrer les modifications</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <h2 className='ProfileTitle'>Modifier le profil</h2>
+        <div>
+          <input
+            type="text"
+            id="firstName"
+            placeholder="Prénom"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Nom"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="passwordConfirmation"
+            placeholder="Confirmation du mot de passe"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="number"
+            id="zip_code"
+            placeholder="Code Postal"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            id="profile_pic"
+            placeholder="Url de l'image"
+            value={profilePic}
+            onChange={(e) => setProfilePic(e.target.value)}
+          />
+        </div>
+        <button type="submit">Enregistrer les modifications</button>
+        <button id="deleteAccountButton" onClick={handleDeleteAccount}>Supprimer le compte</button>
+
+      </form>
     </div>
   );
 }
