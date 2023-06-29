@@ -18,7 +18,7 @@ function NewEventForm() {
     useEffect(() => {
         const fetchSportOptions = async () => {
             try {
-                const response = await fetch("http://localhost:4000/sports"); 
+                const response = await fetch("http://localhost:4000/sports");
                 const data = await response.json();
                 const options = data.sports.map(({ id, name }) => ({ value: id, label: name }));
                 setSportOptions(options);
@@ -45,7 +45,7 @@ function NewEventForm() {
         setLocation(event.target.value);
     };
 
-    const handleEventTimeChange = (event) => {    
+    const handleEventTimeChange = (event) => {
         setEventTime(event.target.value);
     };
 
@@ -60,17 +60,17 @@ function NewEventForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const now = new Date(); 
+        const now = new Date();
         if (new Date(event_date + " " + event_time) < now) {
             alert("La date de l'événement ne peut pas être antérieure à la date et heure actuelles");
             return;
         }
-        
+
         const newEvent = {
             event: {
                 event_name: title,
                 description: content,
-                user_id: user.user_id, 
+                user_id: user.user_id,
                 attendees: attendees,
                 location: location,
                 event_time: event_time,
@@ -94,13 +94,13 @@ function NewEventForm() {
                 alert("L'event a été créé avec succès");
                 navigate("/events");
             } else {
-                navigate("/login"); 
+                navigate("/login");
                 alert("Veuillez vous connecter pour créer une séance !");
             }
         } catch (error) {
             console.error("Erreur lors de la création de l'event :", error);
         }
-    }; 
+    };
 
 
     return (
@@ -108,9 +108,9 @@ function NewEventForm() {
             <h2 className='CreateEventTitle'>Propose une séance !</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input 
+                    <input
                         id="title"
-                        value={title} 
+                        value={title}
                         placeholder='Titre'
                         onChange={handleTitleChange} />
                 </div>
@@ -160,12 +160,12 @@ function NewEventForm() {
                 </div>
                 <div id="scroll-option">
                     <select id="sport_id" onChange={handleSportIdChange} value={sport_id}>
-                      <option value="">Choisissez un sport</option>
-                      {sportOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
+                        <option value="">Choisissez un sport</option>
+                        {sportOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <button type="submit">PUBLIER</button>

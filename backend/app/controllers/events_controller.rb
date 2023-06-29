@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     events = Event.all
@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     render json: { event: event, participants: participants }, status: :ok
   end
   def new
+    # Code pour afficher le formulaire de création d'un nouvel événement
   end
 
   def create
