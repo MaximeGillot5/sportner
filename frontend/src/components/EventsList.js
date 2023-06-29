@@ -124,9 +124,20 @@ function EventsList() {
         },
       });
 
-      const sortedEvents = response.data.events.sort((a, b) => {
+      const currentDate = new Date(); // Obtenir la date et l'heure actuelles
+      currentDate.setDate(currentDate.getDate() + 1); // Ajouter 1 jour à la date actuelle
+
+      // Filtrer les événements pour exclure ceux dont la date est passée à partir du lendemain
+      const filteredEvents = response.data.events.filter((event) => {
+        const eventDate = new Date(event.event_date);
+        return eventDate > currentDate; // Retourne true si la date de l'événement est supérieure à la date actuelle + 1 jour
+      });
+
+      // Trier les événements filtrés par date de création
+      const sortedEvents = filteredEvents.sort((a, b) => {
         return new Date(a.created_at) - new Date(b.created_at);
       }).reverse();
+
       setEvents(sortedEvents);
       setParticipants(response.data.participants);
       setFilteredEvents(sortedEvents);
@@ -134,6 +145,8 @@ function EventsList() {
       console.error('Erreur lors de la récupération des événements :', error);
     }
   };
+
+
 
   const handleSearch = (value) => {
     let filtered;
