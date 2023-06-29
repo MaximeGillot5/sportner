@@ -18,7 +18,7 @@ function NewEventForm() {
     useEffect(() => {
         const fetchSportOptions = async () => {
             try {
-                const response = await fetch("http://localhost:4000/sports"); 
+                const response = await fetch("https://sportner-back-71b62b08edbf.herokuapp.com/sports");
                 const data = await response.json();
                 const options = data.sports.map(({ id, name }) => ({ value: id, label: name }));
                 setSportOptions(options);
@@ -45,7 +45,7 @@ function NewEventForm() {
         setLocation(event.target.value);
     };
 
-    const handleEventTimeChange = (event) => {    
+    const handleEventTimeChange = (event) => {
         setEventTime(event.target.value);
     };
 
@@ -69,7 +69,7 @@ function NewEventForm() {
             event: {
                 event_name: title,
                 description: content,
-                user_id: user.user_id, 
+                user_id: user.user_id,
                 attendees: attendees,
                 location: location,
                 event_time: event_time,
@@ -80,7 +80,7 @@ function NewEventForm() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:4000/events", {
+            const response = await fetch("https://sportner-back-71b62b08edbf.herokuapp.com/events", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -98,7 +98,7 @@ function NewEventForm() {
         } catch (error) {
             console.error("Erreur lors de la création de l'event :", error);
         }
-    }; 
+    };
 
 
     return (
@@ -106,9 +106,9 @@ function NewEventForm() {
             <h2 className='CreateEventTitle'>Propose une séance !</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input 
+                    <input
                         id="title"
-                        value={title} 
+                        value={title}
                         placeholder='Titre'
                         onChange={handleTitleChange} />
                 </div>
@@ -158,12 +158,12 @@ function NewEventForm() {
                 </div>
                 <div id="scroll-option">
                     <select id="sport_id" onChange={handleSportIdChange} value={sport_id}>
-                      <option value="">Choisissez un sport</option>
-                      {sportOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
+                        <option value="">Choisissez un sport</option>
+                        {sportOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <button type="submit">PUBLIER</button>
