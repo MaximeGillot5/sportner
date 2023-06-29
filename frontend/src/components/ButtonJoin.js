@@ -15,7 +15,7 @@ const ButtonJoin = ({ eventId }) => {
             navigate("/login");
             alert("Veuillez vous connecter pour participer à une séance !")
             return;
-          }
+        }
 
         const participationData = {
             user_id: localStorage.getItem("id"),
@@ -23,7 +23,7 @@ const ButtonJoin = ({ eventId }) => {
 
         axios
             .post(
-                `https://sportner-back-71b62b08edbf.herokuapp.com/events/${eventId}/participations`,
+                `http://localhost:4000/events/${eventId}/participations`,
                 participationData,
                 {
                     headers: {
@@ -40,8 +40,8 @@ const ButtonJoin = ({ eventId }) => {
     };
 
     return <div id="buttonContainer">
-                <button id="buttonParticipation" onClick={handleJoin}>Participer</button>
-            </div>;
+        <button id="buttonParticipation" onClick={handleJoin}>Participer</button>
+    </div>;
 };
 
 export default ButtonJoin;

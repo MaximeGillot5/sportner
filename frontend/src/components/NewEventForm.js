@@ -18,7 +18,7 @@ function NewEventForm() {
     useEffect(() => {
         const fetchSportOptions = async () => {
             try {
-                const response = await fetch("https://sportner-back-71b62b08edbf.herokuapp.com/sports");
+                const response = await fetch("http://localhost:4000/sports");
                 const data = await response.json();
                 const options = data.sports.map(({ id, name }) => ({ value: id, label: name }));
                 setSportOptions(options);
@@ -60,12 +60,12 @@ function NewEventForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const now = new Date(); 
+        const now = new Date();
         if (new Date(event_date + " " + event_time) < now) {
             alert("La date de l'événement ne peut pas être antérieure à la date et heure actuelles");
             return;
         }
-        
+
         const newEvent = {
             event: {
                 event_name: title,
@@ -81,7 +81,7 @@ function NewEventForm() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("https://sportner-back-71b62b08edbf.herokuapp.com/events", {
+            const response = await fetch("http://localhost:4000/events", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -94,7 +94,7 @@ function NewEventForm() {
                 alert("L'event a été créé avec succès");
                 navigate("/events");
             } else {
-                navigate("/login"); 
+                navigate("/login");
                 alert("Veuillez vous connecter pour créer une séance !");
             }
         } catch (error) {
