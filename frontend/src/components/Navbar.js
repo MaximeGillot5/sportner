@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { BrowserRouter as Router} from 'react-router-dom';
@@ -6,9 +6,13 @@ import Logout from "./Logout";
 
 function Navbar() {
     const navRef = useRef();
-    const token = localStorage.getItem('token');
-    const storedEmail = localStorage.getItem('email');
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [storedEmail, setStoredEmail] = useState(localStorage.getItem('email'));
 
+    useEffect(() => {
+        setToken(localStorage.getItem('token'));
+        setStoredEmail(localStorage.getItem('email'));
+    }, []);
     function handleDivClick() {
         window.location.href = '/';
     }
