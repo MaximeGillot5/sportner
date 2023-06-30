@@ -10,8 +10,7 @@ const Contact = () => {
         const formMess = document.querySelector(".form-message");
 
         emailjs.sendForm('service_3fs5cnc', 'template_hsmdtv6', form.current, process.env.REACT_APP_API_KEY)
-            .then((result) => {
-                console.log(result.text);
+            .then(() => {
                 form.current.reset();
                 formMess.innerHTML = "<p className='success'>Message envoyé !</p>";
 
@@ -19,8 +18,7 @@ const Contact = () => {
                     formMess.innerHTML = "";
                 }, 2500);
 
-            }, (error) => {
-                console.log(error.text);
+            }, () => {
                 formMess.innerHTML = "<p className='error'>Veuillez réessayer ! </p>";
 
                 setTimeout(() => {

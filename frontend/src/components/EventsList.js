@@ -67,7 +67,6 @@ function EventCard({ event }) {
     const fetchUserInfos = async () => {
       try {
         const eventId = event.user_id;
-        console.log("event.userid", eventId);
 
         const response = await axios.get(`https://sportner-backend-a5fda8060658.herokuapp.com/users/${eventId}`);
         const first_name = response.data.user.first_name
@@ -75,7 +74,6 @@ function EventCard({ event }) {
 
         setIdentity({ first_name, last_name });
 
-        console.log(first_name, last_name);
       } catch (error) {
         console.error(error);
       }
