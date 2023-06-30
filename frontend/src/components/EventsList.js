@@ -7,6 +7,7 @@ import ButtonJoin from './ButtonJoin';
 import ParticipationsList from './ParticipationsList';
 import SearchBar from './SearchBar';
 import DeleteEvent from './DeleteEvent';
+import DeleteParticipation from './DeleteParticipation';
 
 function EventCard({ event }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -73,6 +74,7 @@ function EventCard({ event }) {
               <ButtonJoin eventId={event.id} />
             )}
           <ParticipationsList eventId={event.id} />
+          <DeleteParticipation eventId={event.id} />
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
@@ -125,7 +127,7 @@ function EventsList() {
       });
 
       const currentDate = new Date(); // Obtenir la date et l'heure actuelles
-      currentDate.setDate(currentDate.getDate() + 1); // Ajouter 1 jour à la date actuelle
+      currentDate.setDate(currentDate.getDate() - 1); // Ajouter 1 jour à la date actuelle
 
       // Filtrer les événements pour exclure ceux dont la date est passée à partir du lendemain
       const filteredEvents = response.data.events.filter((event) => {
