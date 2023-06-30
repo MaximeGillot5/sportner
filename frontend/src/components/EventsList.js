@@ -93,8 +93,8 @@ function EventCard({ event }) {
             : (
               <ButtonJoin eventId={event.id} />
             )}
+          {currentUser !== event.user_id ? (<DeleteParticipation eventId={event.id} />) : (null)}
           <ParticipationsList eventId={event.id} />
-          {currentUser !== event.user_id ? (<DeleteParticipation eventId={event.id} />)
           <div className='date'>
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
