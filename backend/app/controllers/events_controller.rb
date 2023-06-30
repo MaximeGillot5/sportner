@@ -37,11 +37,10 @@ class EventsController < ApplicationController
  
 
   def destroy
-    event = Event.find_by(id: params[:id], user_id: current_user.id)
-
-    event.participations.destroy_all
+    event = Event.find_by(id: params[:id])
   
-    if event
+    if event && (event.user_id == current_user.id || current_user.admin)
+      event.participations.destroy_all
       event.destroy
       render json: { message: 'Événement supprimé avec succès', event: event }, status: :ok
     else

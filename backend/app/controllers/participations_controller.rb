@@ -38,7 +38,7 @@ class ParticipationsController < ApplicationController
 
 
   def destroy
-    participation = Participation.find_by(event_id: params[:id], id: params[:id])   
+    participation = Participation.find_by(event_id: params[:id], user_id: current_user.id)
     if participation
       participation.destroy
       render json: { message: 'Participation supprimée avec succès' }, status: :ok
@@ -46,6 +46,7 @@ class ParticipationsController < ApplicationController
       render json: { error: 'Erreur lors de la suppression de la participation' }, status: :unprocessable_entity
     end
   end
+  
   
   
 end
