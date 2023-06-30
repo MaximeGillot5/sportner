@@ -1,8 +1,25 @@
-#register-form input {
+#register-form #firstName,
+#register-form #lastName,
+#register-form #email,
+#register-form #password,
+#register-form #passwordConfirmation {
   width: 80%;
   min-width: 60%;
   border-radius: 40px;
   font-size: smaller;
+}
+#register-form #agreeTerms{
+  outline: none !important;
+  box-shadow: none !important;
+}
+#register-form p{
+  font-size: 15px;
+  width: 98%;
+  margin: 10px auto;
+}
+#register-form a{
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #register-form input::placeholder {
@@ -26,6 +43,9 @@
   #register-form input::placeholder {
       font-size: 8px;
       text-align: center;
+  }
+  #register-form p{
+    font-size: 12px;
   }
 }
 
