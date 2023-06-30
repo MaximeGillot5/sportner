@@ -13,10 +13,16 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
+
+    if (!agreeTerms) {
+      setError("Veuillez accepter les conditions générales d'utilisation.");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -62,7 +68,7 @@ function SignupForm() {
   };
 
   return (
-    <form id="register-form" class="my-form" onSubmit={handleSubmit}>
+    <form id="register-form" className="my-form" onSubmit={handleSubmit}>
       <h2 id="register-title">Créer un compte</h2>
       {error && <p>{error}</p>}
       <div id="firstname-input">
@@ -114,6 +120,17 @@ function SignupForm() {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           required
         />
+      </div>
+      <div>
+          <label htmlFor="agreeTerms">
+          <p>J'accepte les <a target='_blank' href="/rgpd">conditions générales d'utilisation</a></p>
+          <input
+            type="checkbox"
+            id="agreeTerms"
+            checked={agreeTerms}
+            onChange={(e) => setAgreeTerms(e.target.checked)}
+          />
+        </label>
       </div>
       <button id="register-btn" type="submit">
         Créer un compte

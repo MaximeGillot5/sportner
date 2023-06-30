@@ -12,13 +12,10 @@ const Footer = () => {
         <div id='footer-right' className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
 
           <div className="space-y-3">
-            <h3 id='text-orange' className="tracki uppercase dark:text-gray-50">Company</h3>
+            <h3 id='text-orange' className="tracki uppercase dark:text-gray-50">Politique de confidentialité</h3>
             <ul className="space-y-1">
               <li>
-                <a rel="noopener noreferrer" href="#">Privacy</a>
-              </li>
-              <li>
-                <a rel="noopener noreferrer" href="#">Terms of Service</a>
+                <a rel="noopener noreferrer" href="/rgpd">RGPD</a>
               </li>
             </ul>
           </div>
