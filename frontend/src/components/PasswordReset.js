@@ -10,7 +10,7 @@ const PasswordReset = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch(`http://localhost:4000/passwords/forgot?email=${email}`, {
+    fetch(`https://sportner-backend-a5fda8060658.herokuapp.com/passwords/forgot?email=${email}`, {
       method: 'POST',
     })
       .then((response) => {
@@ -31,7 +31,7 @@ const PasswordReset = () => {
         setRequestStatus('error');
       });
   }
-  
+
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
@@ -43,7 +43,7 @@ const PasswordReset = () => {
         return (
           <div className='requestResponse'>
             <div>
-            Ta demande de réinitialisation de mot de passe a bien été envoyée ! ✅
+              Ta demande de réinitialisation de mot de passe a bien été envoyée ! ✅
             </div>
             <a className="redirect" onClick={() => navigate('/passwords/reset')}>Tu peux le modifier ici !</a>
           </div>
@@ -70,7 +70,7 @@ const PasswordReset = () => {
   return (
     <div id='input-mail'>
       <form onSubmit={handleSubmit}>
-      <h1>Mot de passe oublié ? Donne-nous ton adresse email d'inscription et on s'occupe du reste !</h1>
+        <h1>Mot de passe oublié ? Donne-nous ton adresse email d'inscription et on s'occupe du reste !</h1>
         {requestStatus === 'pending' && (
           <label>
             Adresse email :
@@ -80,7 +80,7 @@ const PasswordReset = () => {
         <button id='button-lost' type='submit' disabled={requestStatus !== 'pending' || !email}>
           Réinitialiser le mot de passe
         </button>
-      {renderMessage()}
+        {renderMessage()}
       </form>
     </div>
   );

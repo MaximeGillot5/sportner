@@ -18,7 +18,7 @@ function NewEventForm() {
     useEffect(() => {
         const fetchSportOptions = async () => {
             try {
-                const response = await fetch("http://localhost:4000/sports");
+                const response = await fetch("https://sportner-backend-a5fda8060658.herokuapp.com/sports");
                 const data = await response.json();
                 const options = data.sports.map(({ id, name }) => ({ value: id, label: name }));
                 setSportOptions(options);
@@ -81,7 +81,7 @@ function NewEventForm() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:4000/events", {
+            const response = await fetch("https://sportner-backend-a5fda8060658.herokuapp.com/events", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

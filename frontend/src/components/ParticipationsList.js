@@ -12,7 +12,7 @@ function ParticipationsList({ eventId }) {
     const fetchEvents = async (eventId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:4000/events/${eventId}`, {
+            const response = await axios.get(`https://sportner-backend-a5fda8060658.herokuapp.com/events/${eventId}`, {
                 headers: {
                     Authorization: `${token}`,
                 },

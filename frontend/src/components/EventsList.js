@@ -23,7 +23,7 @@ function EventCard({ event }) {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-      fetch('http://localhost:4000/current_user', {
+      fetch('https://sportner-backend-a5fda8060658.herokuapp.com/current_user', {
         headers: {
           Authorization: `${token}`,
         },
@@ -53,7 +53,7 @@ function EventCard({ event }) {
   useEffect(() => {
     const fetchSportOptions = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/sports");
+        const response = await axios.get("https://sportner-backend-a5fda8060658.herokuapp.com/sports");
         const options = response.data.sports.map(({ id, name, sport_url }) => ({ value: id, label: name, pic: sport_url }));
         setSportOptions(options);
       } catch (error) {
@@ -68,21 +68,21 @@ function EventCard({ event }) {
       try {
         const eventId = event.user_id;
         console.log("event.userid", eventId);
-  
-        const response = await axios.get(`http://localhost:4000/users/${eventId}`);
+
+        const response = await axios.get(`https://sportner-backend-a5fda8060658.herokuapp.com/users/${eventId}`);
         const first_name = response.data.user.first_name
         const last_name = response.data.user.last_name
 
         setIdentity({ first_name, last_name });
-        
+
         console.log(first_name, last_name);
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     fetchUserInfos();
-  }, []); 
+  }, []);
 
   return (
     <div id='eventCard' onClick={handleCardClick}>
@@ -101,7 +101,7 @@ function EventCard({ event }) {
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
-            <p>Organisé par {identity.first_name} {identity.last_name}</p>
+          <p>Organisé par {identity.first_name} {identity.last_name}</p>
         </div>
       ) : (
         <div id='infosCard'>
@@ -143,7 +143,7 @@ function EventsList() {
   const fetchEvents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:4000/events', {
+      const response = await axios.get('https://sportner-backend-a5fda8060658.herokuapp.com/events', {
         headers: {
           Authorization: `${token}`,
         },

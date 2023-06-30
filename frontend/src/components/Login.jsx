@@ -16,18 +16,21 @@ function Login() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: {
-            email: email,
-            password: password,
+      const response = await fetch(
+        "https://sportner-backend-a5fda8060658.herokuapp.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        }),
-      });
+          body: JSON.stringify({
+            user: {
+              email: email,
+              password: password,
+            },
+          }),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();

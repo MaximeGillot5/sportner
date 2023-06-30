@@ -15,7 +15,7 @@ function Form() {
         const storedEmail = localStorage.getItem('email');
 
         if (token && storedEmail) {
-            fetch('http://localhost:4000/current_user', {
+            fetch('https://sportner-backend-a5fda8060658.herokuapp.com/current_user', {
                 headers: {
                     Authorization: `${token}`,
                 },
@@ -50,10 +50,10 @@ function Form() {
             ) : (
                 <div id="LoginFormWrap">
                     <div className="title"> <p>Connecte-toi ou inscris-toi dès maintenant sur Sport<span id='text-orange'>ner</span> !</p> </div>
-                        <div className="signin-form">
-                    <Login />
+                    <div className="signin-form">
+                        <Login />
                     </div>
-                        <div className="signup-form">
+                    <div className="signup-form">
                         <Register />
                     </div>
                 </div>

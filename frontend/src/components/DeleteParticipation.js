@@ -5,7 +5,7 @@ const DeleteParticipation = ({ eventId, onDelete }) => {
 
     const deleteParticipation = async () => {
         try {
-            await axios.delete(`http://localhost:4000/participations/${eventId}`, {
+            await axios.delete(`https://sportner-backend-a5fda8060658.herokuapp.com/participations/${eventId}`, {
                 headers: {
                     Authorization: `${localStorage.getItem('token')}`,
                 },

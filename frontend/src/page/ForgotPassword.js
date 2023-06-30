@@ -12,7 +12,7 @@ const PasswordChange = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch('http://localhost:4000/passwords/reset', {
+    fetch('https://sportner-backend-a5fda8060658.herokuapp.com/passwords/reset', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const PasswordChange = () => {
       .then((response) => {
         if (response.ok) {
           setRequestStatus('success');
-          setTimeout(()=>{
+          setTimeout(() => {
             navigate("/login");
           }, 3000);
         } else if (response.status === 404) {
@@ -75,7 +75,7 @@ const PasswordChange = () => {
             <input type="password" value={password} onChange={handleNewPasswordChange} />
           </label>
         </div>
-        <button type='submit' disabled={!token|| !email || !password}>Réinitialiser le mot de passe</button>
+        <button type='submit' disabled={!token || !email || !password}>Réinitialiser le mot de passe</button>
       </form>
     );
   }
@@ -91,7 +91,7 @@ const PasswordChange = () => {
       case 'not-found':
         return (
           <div>
-            Adresse email ou code secret incorrect. ❌ 
+            Adresse email ou code secret incorrect. ❌
           </div>
         );
       case 'error':

@@ -17,8 +17,8 @@ class User < ApplicationRecord
   validates :zip_code, numericality: { only_integer: true }, allow_nil: true
   
 
-         after_create :welcome_send
-        before_validation :downcase_email
+        #  after_create :welcome_send
+        # before_validation :downcase_email
 
          def welcome_send
            UserMailer.welcome_email(self).deliver_now

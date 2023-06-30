@@ -15,7 +15,7 @@ const MyEvents = () => {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-      fetch('http://localhost:4000/current_user', {
+      fetch('https://sportner-backend-a5fda8060658.herokuapp.com/current_user', {
         headers: {
           Authorization: `${token}`,
         },
@@ -29,7 +29,7 @@ const MyEvents = () => {
             email: storedEmail,
           });
 
-          fetch(`http://localhost:4000/users/${data.id}`)
+          fetch(`https://sportner-backend-a5fda8060658.herokuapp.com/users/${data.id}`)
             .then((response) => response.json())
             .then((data) => {
               const events = data.events;
@@ -89,8 +89,8 @@ const MyEvents = () => {
       </div>
     </div>
   );
-  
-  
+
+
 };
 
 export default MyEvents;
