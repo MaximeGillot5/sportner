@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import EditProfileForm from '../components/EditProfileForm';
 import MyProfile from '../components/MyProfile';
-import MyEvents from '../components/MyEvents';
 import '../styles/UserAccount.css';
 
 const UserAccount = () => {
@@ -19,7 +18,6 @@ const UserAccount = () => {
           <div className='button'>
             <button onClick={handleEditClick}>Modifier le profil</button>
           </div>
-          <MyEvents/>
         </>
       )}
       {isEditing && (

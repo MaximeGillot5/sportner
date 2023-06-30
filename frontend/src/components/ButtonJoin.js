@@ -34,7 +34,6 @@ const ButtonJoin = ({ eventId }) => {
                 }
             )
             .then((response) => {
-                console.log(response.data);
             })
             .catch((error) => {
                 console.error(error);

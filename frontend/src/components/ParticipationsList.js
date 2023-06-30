@@ -21,7 +21,6 @@ function ParticipationsList({ eventId }) {
             if (Array.isArray(response.data.participants)) {
                 setParticipants(response.data.participants);
             }
-            console.log(response.data);
         } catch (error) {
             console.error('Erreur lors de la récupération des événements :', error);
         }

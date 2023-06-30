@@ -22,7 +22,6 @@ const MyProfile = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setFirstName(data.first_name);
           setLastName(data.last_name);
           setEmail(data.email);
