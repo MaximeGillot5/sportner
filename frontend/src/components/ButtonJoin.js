@@ -25,7 +25,7 @@ const ButtonJoin = ({ eventId }) => {
 
         axios
             .post(
-                `http://localhost:4000/events/${eventId}/participations`,
+                `https://sportner-backend-a5fda8060658.herokuapp.com/events/${eventId}/participations`,
                 participationData,
                 {
                     headers: {
@@ -42,7 +42,7 @@ const ButtonJoin = ({ eventId }) => {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/events/${eventId}`)
+        axios.get(`https://sportner-backend-a5fda8060658.herokuapp.com/events/${eventId}`)
             .then((response) => {
                 setParticipationsCount(response.data.participants.length);
                 setAttendeesCount(response.data.event.attendees);
@@ -51,7 +51,7 @@ const ButtonJoin = ({ eventId }) => {
                 console.error(error);
             });
     }, [eventId]);
-    
+
 
     if (participationsCount < attendeesCount) {
         return (
@@ -62,7 +62,7 @@ const ButtonJoin = ({ eventId }) => {
             </div>
         );
     } else {
-        return null; 
+        return null;
     }
 };
 

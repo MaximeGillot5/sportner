@@ -6,7 +6,7 @@ const Sports = () => {
   const [sportPic, setSportPic] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/sports')
+    fetch('https://sportner-backend-a5fda8060658.herokuapp.com/sports')
       .then((response) => response.json())
       .then((data) => {
         const names = data.sports.map((sport) => sport.name);
@@ -32,7 +32,7 @@ const Sports = () => {
         ))}
       </div>
     </div>
-);
+  );
 
 };
 

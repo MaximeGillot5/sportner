@@ -19,7 +19,7 @@ function EditProfileForm() {
     const storedEmail = localStorage.getItem('email');
 
     if (token && storedEmail) {
-      fetch('http://localhost:4000/current_user', {
+      fetch('https://sportner-backend-a5fda8060658.herokuapp.com/current_user', {
         headers: {
           Authorization: `${token}`,
         },
@@ -50,7 +50,7 @@ function EditProfileForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`http://localhost:4000/users/${user.id}`, {
+    fetch(`https://sportner-backend-a5fda8060658.herokuapp.com/users/${user.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ function EditProfileForm() {
       localStorage.removeItem("id");
       localStorage.removeItem("email");
       navigate("/");
-      fetch(`http://localhost:4000/users/${user.id}`, {
+      fetch(`https://sportner-backend-a5fda8060658.herokuapp.com/users/${user.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
