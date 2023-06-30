@@ -12,9 +12,7 @@ class EventsController < ApplicationController
 
     render json: { event: event, participants: participants }, status: :ok
   end
-  def new
-    # Code pour afficher le formulaire de création d'un nouvel événement
-  end
+  
 
   def create
     event_params_with_user_id = event_params.merge(user_id: current_user.id)

@@ -88,6 +88,9 @@ function EditProfileForm() {
   const handleDeleteAccount = () => {
     const confirmDelete = window.confirm('Voulez-vous vraiment quitter Sportner ?');
     if (confirmDelete) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("id");
+      localStorage.removeItem("email");
       navigate("/");
       fetch(`http://localhost:4000/users/${user.id}`, {
         method: 'DELETE',
@@ -98,6 +101,7 @@ function EditProfileForm() {
       })
         .then((response) => response.json())
         .then(() => {
+          window.location.reload();
           alert("Votre compte a bien été supprimé. À bientôt sur Sportner !");
         })
         .catch((error) => {

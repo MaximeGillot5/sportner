@@ -14,6 +14,7 @@ function EventCard({ event }) {
   const [selectedValue, setSelectedValue] = useState(event.sport_id);
   const [user, setUser] = useAtom(userAtom);
   const [currentUser, setCurrentUser] = useState([]);
+  const [identity, setIdentity] = useState({ first_name: "", last_name: "" });
 
 
   useEffect(() => {
@@ -61,6 +62,27 @@ function EventCard({ event }) {
     fetchSportOptions();
   }, []);
 
+  useEffect(() => {
+    const fetchUserInfos = async () => {
+      try {
+        const eventId = event.user_id;
+        console.log("event.userid", eventId);
+  
+        const response = await axios.get(`http://localhost:4000/users/${eventId}`);
+        const first_name = response.data.user.first_name
+        const last_name = response.data.user.last_name
+
+        setIdentity({ first_name, last_name });
+        
+        console.log(first_name, last_name);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchUserInfos();
+  }, []); 
+
   return (
     <div id='eventCard' onClick={handleCardClick}>
       {showDetails ? (
@@ -77,6 +99,7 @@ function EventCard({ event }) {
             <p>📅{Moment(event.event_date).format('DD/MM/YYYY')}</p>
             <p>🕐{Moment(event.event_time).subtract(1, 'hour').format('HH')}h{Moment(event.event_time).format('mm')}</p>
           </div>
+            <p>Organisé par {identity.first_name} {identity.last_name}</p>
         </div>
       ) : (
         <div id='infosCard'>
@@ -124,16 +147,15 @@ function EventsList() {
         },
       });
 
-      const currentDate = new Date(); // Obtenir la date et l'heure actuelles
-      currentDate.setDate(currentDate.getDate() + 1); // Ajouter 1 jour à la date actuelle
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate());
 
-      // Filtrer les événements pour exclure ceux dont la date est passée à partir du lendemain
       const filteredEvents = response.data.events.filter((event) => {
         const eventDate = new Date(event.event_date);
-        return eventDate > currentDate; // Retourne true si la date de l'événement est supérieure à la date actuelle + 1 jour
+        return eventDate > currentDate;
       });
 
-      // Trier les événements filtrés par date de création
+
       const sortedEvents = filteredEvents.sort((a, b) => {
         return new Date(a.created_at) - new Date(b.created_at);
       }).reverse();
