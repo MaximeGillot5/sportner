@@ -69,7 +69,7 @@ body {
 
 #hero {
   grid-area: 1 / 1 / 4 / 3;
-  background-image: url(../images/shoes.jpg);
+  background-image: url(../images/shoes.webp);
   background-size: cover;
   background-position: center;
   color: rgb(255, 255, 255);
@@ -213,7 +213,7 @@ body {
   border-radius: 40px;
   overflow: hidden;
   margin: 2px;
-  background-image: url(../images/tennis.jpg);
+  background-image: url(../images/tennis.webp);
   background-size: cover;
   background-position: center;
   filter: brightness(70%);

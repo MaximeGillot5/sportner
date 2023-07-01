@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import start from "../images/fly.png";
-import five from "../images/five.jpg";
-import padel from "../images/padel.jpg";
+import start from "../images/fly.webp";
+import five from "../images/five.webp";
+import padel from "../images/padel.webp"
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
