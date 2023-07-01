@@ -148,8 +148,8 @@ function EventsList() {
       });
 
 
-      const currentDate = new Date(); // Obtenir la date et l'heure actuelles
-      currentDate.setDate(currentDate.getDate() - 1); // Ajouter 1 jour à la date actuelle
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() - 1);
 
 
       const filteredEvents = response.data.events.filter((event) => {
